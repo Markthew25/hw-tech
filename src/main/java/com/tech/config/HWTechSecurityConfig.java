@@ -25,21 +25,37 @@ public class HWTechSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	}
 
-	@Override
+//	@Override
+//	protected void configure(HttpSecurity http) throws Exception {
+//		
+//		http.authorizeRequests()
+//				.antMatchers("/").hasRole("EMPLOYEE")
+//				.antMatchers("/leaders/**").hasRole("MANAGER")
+//				.antMatchers("/systems/**").hasRole("ADMIN")
+//				//.anyRequest().authenticated()
+//				.and()
+//					.formLogin()
+//					.loginPage("/login")//we will create controller for this request mapping
+//					.loginProcessingUrl("/user-authentication")//we get this for free Spring security
+//					.permitAll()
+//				.and()
+//				.logout().permitAll();
+//	}
+	
+	
 	protected void configure(HttpSecurity http) throws Exception {
-		
-		http.authorizeRequests()
-				.antMatchers("/").hasRole("EMPLOYEE")
-				.antMatchers("/leaders/**").hasRole("MANAGER")
-				.antMatchers("/systems/**").hasRole("ADMIN")
-				//.anyRequest().authenticated()
-				.and()
-					.formLogin()
-					.loginPage("/login")//we will create controller for this request mapping
-					.loginProcessingUrl("/user-authentication")//we get this for free Spring security
-					.permitAll()
-				.and()
-				.logout().permitAll();
+	    http
+		    	.authorizeRequests().antMatchers("/")
+		    		.hasRole("EMPLOYEE").anyRequest()
+		    		.authenticated()
+		    	.and()
+			    .formLogin()
+				.loginPage("/login")//we will create controller for this request mapping
+				.loginProcessingUrl("/user-authentication")//we get this for free Spring security
+				.permitAll()
+			.and()
+			.logout().permitAll();
 	}
 
+	
 }

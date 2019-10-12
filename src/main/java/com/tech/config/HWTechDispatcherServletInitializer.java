@@ -11,7 +11,7 @@ public class HWTechDispatcherServletInitializer extends AbstractAnnotationConfig
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class[] {HWTechAppConfig.class};
+		return new Class[] {HWWebMVCConfig.class};
 	}
 
 	@Override
