@@ -51,5 +51,5 @@ public class HWTechSecurityConfig extends WebSecurityConfigurerAdapter {
 			http.antMatcher("/leaders/**").authorizeRequests().anyRequest().hasRole("MANAGER").and().httpBasic();
 		}
 	}
-
+		
 }
