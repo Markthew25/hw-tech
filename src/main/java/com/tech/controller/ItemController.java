@@ -5,24 +5,26 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.tech.dao.ItemDAO;
 import com.tech.entity.Item;
+import com.tech.service.ItemService;
 
 @Controller
 @RequestMapping("/item")
 public class ItemController {
 
-	//need to inject the item dao
+	//need to inject the item service
 	@Autowired
-	private ItemDAO itemDAO;
+	private ItemService itemService;
 	
-	@RequestMapping("/list")
+	@GetMapping("/list")
 	public String listItems(Model theModel) {
 		
-		//get customer from the dao
-		List<Item> theItems=itemDAO.getItems();
+		//get customer from the item service
+		//and the item service will get data from itemDAO
+		List<Item> theItems= itemService.getItems();
 		
 		System.out.println(theItems);
 		

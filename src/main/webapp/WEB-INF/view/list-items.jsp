@@ -5,7 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+
+	<link type="text/css" rel="stylesheet"
+			href="${pageContext.request.contextPath}/resources/css/style.css"/>
+
 <title>Item List</title>
 </head>
 <body>
@@ -21,6 +24,10 @@
 		<div id="container">
 			
 			<div id="content">
+			
+				<input type="submit" value="Add Item"
+						onclick="window.location.href='sho.wAddItemForm'; return false;"
+						class="add-button"/>
 			
 				<!-- add our html table here -->
 				
