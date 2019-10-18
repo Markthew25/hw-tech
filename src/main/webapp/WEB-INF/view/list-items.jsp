@@ -6,8 +6,10 @@
 <html>
 <head>
 
-	<link type="text/css" rel="stylesheet"
-			href="${pageContext.request.contextPath}/resources/css/style.css"/>
+	<!-- <link type="text/css" rel="stylesheet"
+			href="resources/css/style.css" media="screen"/> -->
+			
+	<link href="<c:url value="/resources/style.css" />" rel="stylesheet"/>
 
 <title>Item List</title>
 </head>
