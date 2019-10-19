@@ -1,10 +1,10 @@
-package com.tech.dao;
+package com.tech.service;
 
 import java.util.List;
 
 import com.tech.entity.Item;
 
-public interface ItemDAO {
+public interface ItemService {
 
 	public List<Item> getItems();
 

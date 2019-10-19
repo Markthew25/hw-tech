@@ -4,7 +4,6 @@
 <html>
 <head>
 	<title>Home</title>
-	<security:authentication property="principal" />
 </head>
 <body>
 <h2>HWTech Home Page</h2>
@@ -28,6 +27,14 @@
 	<p>
 		<a href="${pageContext.request.contextPath }/leaders">Leadership Meeting</a>
 		(Only for Managers)
+	</p>
+	
+	<hr>
+	
+	<!-- Add a link to point to /leaders or /admin -->
+	<p>
+		<a href="${pageContext.request.contextPath }/systems">Database Management</a>
+		(Only for Administrators)
 	</p>
 	
 	<hr>

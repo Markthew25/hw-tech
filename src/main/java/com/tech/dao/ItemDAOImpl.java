@@ -7,7 +7,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.tech.entity.Item;
 
@@ -15,12 +14,10 @@ import com.tech.entity.Item;
 public class ItemDAOImpl implements ItemDAO {
 
 	// need to inject the session factory
-
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	@Override
-	@Transactional
 	public List<Item> getItems() {
 		
 		//get the current hibernate session
@@ -36,7 +33,18 @@ public class ItemDAOImpl implements ItemDAO {
 		//return the results
 		return items;
 	}
-	
+
+	@Override
+	public void saveItem(Item theItem) {
+		
+		//get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		//save the customer
+		currentSession.save(theItem);
+		
+	}
+
 	
 
 }
