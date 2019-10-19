@@ -33,7 +33,18 @@ public class ItemDAOImpl implements ItemDAO {
 		//return the results
 		return items;
 	}
-	
+
+	@Override
+	public void saveItem(Item theItem) {
+		
+		//get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		//save the customer
+		currentSession.save(theItem);
+		
+	}
+
 	
 
 }

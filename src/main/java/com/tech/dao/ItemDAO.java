@@ -7,5 +7,7 @@ import com.tech.entity.Item;
 public interface ItemDAO {
 
 	public List<Item> getItems();
+
+	public void saveItem(Item theItem);
 	
 }

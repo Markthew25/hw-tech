@@ -6,8 +6,10 @@
 <html>
 <head>
 
-	<link type="text/css" rel="stylesheet"
-			href="${pageContext.request.contextPath}/resources/css/style.css"/>
+	<!-- <link type="text/css" rel="stylesheet"
+			href="resources/css/style.css" media="screen"/> -->
+			
+	<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet"/>
 
 <title>Item List</title>
 </head>
@@ -26,7 +28,7 @@
 			<div id="content">
 			
 				<input type="submit" value="Add Item"
-						onclick="window.location.href='sho.wAddItemForm'; return false;"
+						onclick="window.location.href='showAddItemForm'; return false;"
 						class="add-button"/>
 			
 				<!-- add our html table here -->
