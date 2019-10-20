@@ -34,27 +34,33 @@
 				<tbody>
 					<tr>
 						<td><label>Item name:</label></td>
-						<td><form:input path="itemName"/>
+						<td><form:input path="itemName"/></td>
 					</tr>
 					<tr>
 						<td><label>Category #:</label></td>
-						<td><form:input path="catID"/>
+						<td><form:input path="catID"/></td>
 					</tr>
 					<tr>
 						<td><label>Brand #:</label></td>
-						<td><form:input path="brandID"/>
+						<td><form:input path="brandID"/></td>
 					</tr>
 					<tr>
 						<td><label>Supplier #:</label></td>
-						<td><form:input path="suppID"/>
+						<td><form:input path="suppID"/></td>
 					</tr>
 					<tr>
 						<td><label>Status:</label></td>
-						<td><form:input path="itemStatus"/>
+						<td>
+							<form:select path="itemStatus">
+								<form:option value="" label="--Please Select"/>
+								<form:option value="Okay">Available</form:option>
+								<form:option value="Not Okay">Not Available</form:option>
+							</form:select>
+						</td>
 					</tr>
 					<tr>
 						<td><label>Quantity:</label></td>
-						<td><form:input path="itemQty"/>
+						<td><form:input path="itemQty"/></td>
 					</tr>
 					<tr>
 						<td><label></label></td>
