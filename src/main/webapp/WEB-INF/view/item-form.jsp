@@ -22,6 +22,14 @@
 		<h3>Add new item</h3>
 		
 		<form:form action="saveItem" modelAttribute="item" method="POST">
+		
+			<!-- when updating: need to associate this data with item id -->
+			<!-- this line is very important, without this, you'll lose context or lose the actual id of original item -->
+			<!-- it simply call the .getItemID and place it here in hidden form field 
+				and when we do a submit, it will submit data by calling setItemID with the appropriate data
+			-->
+			<form:hidden path="itemID" />
+		
 			<table>
 				<tbody>
 					<tr>
