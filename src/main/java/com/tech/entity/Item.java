@@ -18,6 +18,12 @@ public class Item {
 
 	@Column(name = "item_name")
 	private String itemName;
+	@Column(name = "cat_id")
+	private int catID;
+	@Column(name = "brand_id")
+	private int brandID;
+	@Column(name = "supp_id")
+	private int suppID;
 	@Column(name = "item_status")
 	private String itemStatus;
 	@Column(name = "item_qty")
@@ -27,13 +33,38 @@ public class Item {
 
 	}
 
-	public Item(String itemName, String itemStatus, int itemQty) {
+	public Item(String itemName, int catID, int brandID, int suppID, String itemStatus, int itemQty) {
 		this.itemName = itemName;
+		this.catID = catID;
+		this.brandID = brandID;
+		this.suppID = suppID;
 		this.itemStatus = itemStatus;
 		this.itemQty = itemQty;
 	}
 
+	public int getCatID() {
+		return catID;
+	}
 
+	public void setCatID(int catID) {
+		this.catID = catID;
+	}
+
+	public int getBrandID() {
+		return brandID;
+	}
+
+	public void setBrandID(int brandID) {
+		this.brandID = brandID;
+	}
+
+	public int getSuppID() {
+		return suppID;
+	}
+
+	public void setSuppID(int suppID) {
+		this.suppID = suppID;
+	}
 
 	public int getItemID() {
 		return itemID;
@@ -69,8 +100,8 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "Item [itemID=" + itemID + ", itemName=" + itemName + ", itemStatus=" + itemStatus + ", itemQty="
-				+ itemQty + "]";
+		return "Item [itemID=" + itemID + ", itemName=" + itemName + ", catID=" + catID + ", brandID=" + brandID
+				+ ", suppID=" + suppID + ", itemStatus=" + itemStatus + ", itemQty=" + itemQty + "]";
 	}
 
 }
