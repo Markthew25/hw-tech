@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tech.entity.Item;
 import com.tech.service.ItemService;
@@ -54,6 +55,29 @@ public class ItemController {
 		//save the item using our service
 		itemService.saveItem(theItem);
 				
+		return "redirect:/item/list";
+		
+	}
+	
+	@GetMapping("/showUpdateItemForm")
+	public String showUpdateItemForm(@RequestParam("itemID") int theID, Model theModel) {
+		
+		// get the item from the service
+		Item theItem = itemService.getItem(theID);
+		
+		//set item as model attribute to prepopulate the form
+		theModel.addAttribute("item", theItem);
+		
+		//send over to our form
+		return "item-form";
+	}
+	
+	@GetMapping("/delete")
+	public String deleteItem(@RequestParam("itemID") int theID) {
+		
+		//delete the item
+		itemService.deleteItem(theID);
+		
 		return "redirect:/item/list";
 		
 	}

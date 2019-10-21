@@ -40,16 +40,35 @@
 						<th>Item name</th>
 						<th>Item Status</th>
 						<th>Item Quantity</th>
+						<th>Action</th>
 						
 					 </tr>
 					
+					<!-- Loop through items -->
 					<c:forEach var="tempItem" items="${items }">
+						
+						<!--  construct an update link with item id 
+							so while looping through items, we can get item id.
+						-->
+						<c:url var="updateLink" value="/item/showUpdateItemForm">
+							<c:param name="itemID" value="${tempItem.itemID }" />
+						</c:url>
+						
+						<!-- Construct dele link with item id -->
+						<c:url var="deleteLink" value="/item/delete">
+							<c:param name="itemID" value="${tempItem.itemID }" />
+						</c:url>
 						
 						<tr>
 						
 							<td>${tempItem.itemName }</td>
 							<td>${tempItem.itemStatus }</td>
 							<td>${tempItem.itemQty }</td>
+							
+							<td>
+								<!-- display the update link -->
+								<a href="${updateLink }">Update</a> | <a href="${deleteLink }" onclick="if(!(confirm('Are you sure you want to delete this item?'))) return false">Delete</a>
+							</td>
 						
 						</tr>
 						

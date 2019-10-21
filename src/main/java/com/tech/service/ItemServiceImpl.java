@@ -30,4 +30,16 @@ public class ItemServiceImpl implements ItemService {
 		
 	}
 
+	@Override
+	@Transactional
+	public Item getItem(int theID) {
+		return itemDAO.getItem(theID);
+	}
+
+	@Override
+	@Transactional
+	public void deleteItem(int theID) {
+		itemDAO.deleteItem(theID);	
+	}
+
 }
