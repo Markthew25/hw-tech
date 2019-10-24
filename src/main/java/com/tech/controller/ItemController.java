@@ -46,8 +46,11 @@ public class ItemController {
 		
 		//create model attribute
 		Item theItem = new Item();
+				
+		List<ItemCategory> theCats= itemService.getItemCats();
 		
 		theModel.addAttribute("item", theItem);
+		theModel.addAttribute("cats", theCats);
 		
 		return "item-form";
 	}
@@ -67,9 +70,11 @@ public class ItemController {
 		
 		// get the item from the service
 		Item theItem = itemService.getItem(theID);
+		List<ItemCategory> theCats= itemService.getItemCats();
 		
 		//set item as model attribute to prepopulate the form
 		theModel.addAttribute("item", theItem);
+		theModel.addAttribute("cats", theCats);
 		
 		//send over to our form
 		return "item-form";
@@ -95,34 +100,19 @@ public class ItemController {
 //	      return catList;
 //	}
 	
-	@ModelAttribute("categoryList")
-	public List<ItemCategory> catList(Model theModel) {
-		
-		//get customer from the item service
-		//and the item service will get data from itemDAO
-		List<ItemCategory> theCats= itemService.getItemCats();
-		
-		//add the customer to the model
-//		theModel.addAttribute("cats", theCats);
-		System.out.println(theCats);
-		
-		return theCats;
-		
-	}
-	
-	@ModelAttribute("categoryList1")
-	public Map<Integer, String> catList1(Model theModel) {
-		
-		//get customer from the item service
-		//and the item service will get data from itemDAO
-		Map<Integer, String> theCats= itemService.getItemCats1();
-		
-		//add the customer to the model
-//		theModel.addAttribute("cats", theCats);
-		System.out.println(theCats);
-		
-		return theCats;
-		
-	}
+//	@ModelAttribute("categoryList")
+//	public List<ItemCategory> catList(Model theModel) {
+//		
+//		//get customer from the item service
+//		//and the item service will get data from itemDAO
+//		List<ItemCategory> theCats= itemService.getItemCats();
+//		
+//		//add the customer to the model
+////		theModel.addAttribute("cats", theCats);
+//		System.out.println(theCats);
+//		
+//		return theCats;
+//		
+//	}
 	
 }

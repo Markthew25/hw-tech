@@ -43,10 +43,10 @@ public class ItemCategory{
 		this.catName = catName;
 	}
 
-	@Override
-	public String toString() {
-		return catID + catName;
-	}
+//	@Override
+//	public String toString() {
+//		return catID + catName;
+//	}
 	
 	
 	

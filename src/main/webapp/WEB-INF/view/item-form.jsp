@@ -57,10 +57,14 @@
 					<tr>
 						<td><form:label path="catID">Category:</form:label></td>
 						<td>
-							<form:select path = "catID">
-								<form:option value = "-1" label = "--Please Select"/>
-								<form:options items = "${categoryList1}" />
-			                </form:select>
+							
+								<form:select path = "catID" >
+									<form:option value = "-1" label = "--Please Select"/>
+									<c:forEach var="tempCats" items="${cats }">
+										<form:option value="${tempCats.catID }"  label="${tempCats.catName }"/>
+				                	</c:forEach>
+				                </form:select>
+			               
 						</td>
 					</tr>
 					<tr>
