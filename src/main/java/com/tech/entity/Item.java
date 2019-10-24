@@ -18,8 +18,10 @@ public class Item {
 
 	@Column(name = "item_name")
 	private String itemName;
+	
 	@Column(name = "cat_id")
 	private int catID;
+	
 	@Column(name = "brand_id")
 	private int brandID;
 	@Column(name = "supp_id")

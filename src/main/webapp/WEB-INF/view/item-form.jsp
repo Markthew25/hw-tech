@@ -37,10 +37,6 @@
 						<td><form:input path="itemName"/></td>
 					</tr>
 					<tr>
-						<td><label>Category #:</label></td>
-						<td><form:input path="catID"/></td>
-					</tr>
-					<tr>
 						<td><label>Brand #:</label></td>
 						<td><form:input path="brandID"/></td>
 					</tr>
@@ -56,6 +52,15 @@
 								<form:option value="Okay">Available</form:option>
 								<form:option value="Not Okay">Not Available</form:option>
 							</form:select>
+						</td>
+					</tr>
+					<tr>
+						<td><form:label path="catID">Category:</form:label></td>
+						<td>
+							<form:select path = "catID">
+								<form:option value = "-1" label = "--Please Select"/>
+								<form:options items = "${categoryList1}" />
+			                </form:select>
 						</td>
 					</tr>
 					<tr>

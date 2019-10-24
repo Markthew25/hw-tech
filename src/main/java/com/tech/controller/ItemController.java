@@ -1,6 +1,8 @@
 package com.tech.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tech.entity.Item;
+import com.tech.entity.ItemCategory;
 import com.tech.service.ItemService;
 
 @Controller
@@ -79,6 +82,46 @@ public class ItemController {
 		itemService.deleteItem(theID);
 		
 		return "redirect:/item/list";
+		
+	}
+	
+//	@ModelAttribute("categoryList")
+//	   public List<String> getNumbersList() {
+//	      List<String> catList = new ArrayList<String>();
+//	      catList.add("Mouse");
+//	      catList.add("Keyboard");
+//	      catList.add("Operating System");
+//	      catList.add("Others");
+//	      return catList;
+//	}
+	
+	@ModelAttribute("categoryList")
+	public List<ItemCategory> catList(Model theModel) {
+		
+		//get customer from the item service
+		//and the item service will get data from itemDAO
+		List<ItemCategory> theCats= itemService.getItemCats();
+		
+		//add the customer to the model
+//		theModel.addAttribute("cats", theCats);
+		System.out.println(theCats);
+		
+		return theCats;
+		
+	}
+	
+	@ModelAttribute("categoryList1")
+	public Map<Integer, String> catList1(Model theModel) {
+		
+		//get customer from the item service
+		//and the item service will get data from itemDAO
+		Map<Integer, String> theCats= itemService.getItemCats1();
+		
+		//add the customer to the model
+//		theModel.addAttribute("cats", theCats);
+		System.out.println(theCats);
+		
+		return theCats;
 		
 	}
 	
