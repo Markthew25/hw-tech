@@ -2,9 +2,12 @@ package com.tech.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -54,10 +57,21 @@ public class ItemController {
 	}
 	
 	@PostMapping("/saveItem")
-	public String saveItem(@ModelAttribute("item") Item theItem) {
+	public String saveItem(@Valid @ModelAttribute("item") Item theItem, 
+			BindingResult theBindingResult,
+			Model theModel) {
+		
+		List<ItemCategory> theCats= itemService.getItemCats();
+		theModel.addAttribute("category", theCats);
 		
 		//save the item using our service
-		itemService.saveItem(theItem);
+		// and add validation for empty field
+		
+		if(theBindingResult.hasErrors()) {
+			return "item-form";
+		}else {
+			itemService.saveItem(theItem);
+		}
 				
 		return "redirect:/item/list";
 		

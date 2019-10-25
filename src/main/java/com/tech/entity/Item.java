@@ -19,7 +19,7 @@ public class Item {
 	private int itemID;
 
 	@NotNull(message="is required")
-	@Size(min=1)
+	@Size(min=1, message="is required") 
 	@Column(name = "item_name")
 	private String itemName;
 	

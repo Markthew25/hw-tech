@@ -29,12 +29,18 @@
 				and when we do a submit, it will submit data by calling setItemID with the appropriate data
 			-->
 			<form:hidden path="itemID" />
+			
+			<i>Fill out the form. Asterisk (*) means required.</i>
 		
 			<table>
 				<tbody>
+				
 					<tr>
-						<td><label>Item name:</label></td>
-						<td><form:input path="itemName"/></td>
+						<td><label>Item name (*) :</label></td>
+						<td>
+							<form:input path="itemName"/>
+							<form:errors path="itemName" Class="error"/>
+						</td>
 					</tr>
 					<tr>
 						<td><label>Brand #:</label></td>
