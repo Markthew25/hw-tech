@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "items")
@@ -16,6 +18,8 @@ public class Item {
 	@Column(name = "item_id")
 	private int itemID;
 
+	@NotNull(message="is required")
+	@Size(min=1)
 	@Column(name = "item_name")
 	private String itemName;
 	

@@ -60,7 +60,7 @@
 							
 								<form:select path = "catID" >
 									<form:option value = "-1" label = "--Please Select"/>
-									<c:forEach var="tempCats" items="${cats }">
+									<c:forEach var="tempCats" items="${category }">
 										<form:option value="${tempCats.catID }"  label="${tempCats.catName }"/>
 				                	</c:forEach>
 				                </form:select>

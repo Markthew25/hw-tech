@@ -1,8 +1,6 @@
 package com.tech.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,7 +48,7 @@ public class ItemController {
 		List<ItemCategory> theCats= itemService.getItemCats();
 		
 		theModel.addAttribute("item", theItem);
-		theModel.addAttribute("cats", theCats);
+		theModel.addAttribute("category", theCats);
 		
 		return "item-form";
 	}
@@ -74,7 +72,7 @@ public class ItemController {
 		
 		//set item as model attribute to prepopulate the form
 		theModel.addAttribute("item", theItem);
-		theModel.addAttribute("cats", theCats);
+		theModel.addAttribute("category", theCats);
 		
 		//send over to our form
 		return "item-form";
