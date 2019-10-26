@@ -5,10 +5,13 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +28,22 @@ public class ItemController {
 	//need to inject the item service
 	@Autowired
 	private ItemService itemService;
+	
+	// add an initbinder .. to convert trim input strings
+	// remove leading and trailing whitespace
+	// resolve issue for the validation
+	
+	@InitBinder
+	public void initBinder(WebDataBinder dataBinder) {
+		
+		// (true) means if user input is only whitespace, it will trim all whitespace to become null
+		StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+		
+		// apply to every String class
+		dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+		
+	}
+	
 	
 	@GetMapping("/list")
 	public String listItems(Model theModel) {
@@ -66,6 +85,8 @@ public class ItemController {
 		
 		//save the item using our service
 		// and add validation for empty field
+		
+		System.out.println("Item name: |" + theItem.getItemName() + "|");
 		
 		if(theBindingResult.hasErrors()) {
 			return "item-form";
