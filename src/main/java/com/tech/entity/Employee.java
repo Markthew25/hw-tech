@@ -22,7 +22,7 @@ public class Employee {
 	@Column(name="emp_lname")
 	private String empLName;
 	@Column(name="dept_id")
-	private int depID;
+	private int deptID;
 	public int getEmpID() {
 		return empID;
 	}
@@ -47,11 +47,11 @@ public class Employee {
 	public void setEmpLName(String empLName) {
 		this.empLName = empLName;
 	}
-	public int getDepID() {
-		return depID;
+	public int getDeptID() {
+		return deptID;
 	}
-	public void setDepID(int depID) {
-		this.depID = depID;
+	public void setDeptID(int depID) {
+		this.deptID = depID;
 	}
 	
 	

@@ -2,6 +2,8 @@ package com.tech.dao;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
@@ -25,6 +27,22 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		
 		//return the results
 		return employees;
+	}
+
+	@Override
+	public void saveEmployee(@Valid Employee theEmp) {
+
+		getCurrentSession().saveOrUpdate(theEmp);
+		
+	}
+
+	@Override
+	public Employee getEmployee(int theID) {
+		
+		//retrieve employee from database
+		Employee theEmployee = getCurrentSession().get(Employee.class, theID);
+		
+		return theEmployee;
 	}
 
 }

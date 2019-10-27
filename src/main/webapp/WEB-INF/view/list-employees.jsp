@@ -28,7 +28,7 @@
 			<div id="content">
 			
 				<input type="submit" value="Add Employee"
-						onclick="window.location.href='showAddEmployeeForm'; return false;"
+						onclick="window.location.href='add-employee'; return false;"
 						class="add-button"/>
 			
 				<!-- add our html table here -->
@@ -50,7 +50,7 @@
 						<!--  construct an update link with item id 
 							so while looping through items, we can get item id.
 						-->
-						<c:url var="updateLink" value="/item/showUpdateEmployeeForm">
+						<c:url var="updateLink" value="/employee/update-employee">
 							<c:param name="empID" value="${tempEmp.empID }" />
 						</c:url>
 						
