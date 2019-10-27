@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
@@ -18,7 +20,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
 @Configuration
-@PropertySource("classpath:database.properties")
+@PropertySources({
+	@PropertySource("classpath:database.properties"),
+	@PropertySource("classpath:messages.properties")
+})
 @EnableTransactionManagement
 @ComponentScan(basePackages="com.tech")
 public class HWTechAppConfig {
@@ -76,6 +81,17 @@ public class HWTechAppConfig {
 		HibernateTransactionManager transactionManager = new HibernateTransactionManager();
 		transactionManager.setSessionFactory(sessionFactory().getObject());
 		return transactionManager;
+		
+	}
+	
+	@Bean
+	public ResourceBundleMessageSource messageSource() {
+		
+		ResourceBundleMessageSource source = new ResourceBundleMessageSource();
+        source.setBasenames("/messages");
+//        source.setUseCodeAsDefaultMessage(true);
+
+        return source;
 		
 	}
 

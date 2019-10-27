@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
-import org.springframework.ui.ModelMap;
 
 import com.tech.entity.Item;
 import com.tech.entity.ItemCategory;
