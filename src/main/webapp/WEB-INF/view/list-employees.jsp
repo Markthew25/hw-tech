@@ -55,7 +55,7 @@
 						</c:url>
 						
 						<!-- Construct dele link with item id -->
-						<c:url var="deleteLink" value="/item/delete">
+						<c:url var="deleteLink" value="/employee/delete">
 							<c:param name="empID" value="${tempEmp.empID }" />
 						</c:url>
 						

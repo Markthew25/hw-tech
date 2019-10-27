@@ -23,10 +23,10 @@
 		
 		<form:form action="save-employee" modelAttribute="employee" method="POST">
 		
-			<!-- when updating: need to associate this data with item id -->
-			<!-- this line is very important, without this, you'll lose context or lose the actual id of original item -->
-			<!-- it simply call the .getItemID and place it here in hidden form field 
-				and when we do a submit, it will submit data by calling setItemID with the appropriate data
+			<!-- when updating: need to associate this data with employee id -->
+			<!-- this line is very important, without this, you'll lose context or lose the actual id of original employee -->
+			<!-- it simply call the .getEmpID and place it here in hidden form field 
+				and when we do a submit, it will submit data by calling setEmpID with the appropriate data
 			-->
 			<form:hidden path="empID" />
 			
@@ -57,7 +57,7 @@
 							
 							<form:select path = "deptID" >
 								<form:option value = "-1" label = "--Please Select"/>
-								<c:forEach var="tempDept" items="${department }">
+								<c:forEach var="tempDept" items="${departments }">
 									<form:option value="${tempDept.deptID }"  label="${tempDept.deptName }"/>
 			                	</c:forEach>
 			                </form:select>

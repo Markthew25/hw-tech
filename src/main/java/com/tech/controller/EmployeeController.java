@@ -5,15 +5,19 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.tech.entity.Department;
 import com.tech.entity.Employee;
 import com.tech.service.EmployeeService;
 
@@ -25,7 +29,16 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService empService;
 	
-	//TODO add ini binder
+	//TODO add init binder
+	@InitBinder
+	public void initBinder(WebDataBinder dataBinder) {
+		
+		StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+		
+		//white space trimmer, apply to all String class
+		dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+		
+	}
 	
 	@GetMapping("/list")
 	public String listEmployees(Model theModel) {
@@ -39,12 +52,29 @@ public class EmployeeController {
 		
 	}
 	
+	@GetMapping("/add-employee")
+	public String addEmployee(Model theModel) {
+		
+		//create model attribute
+		Employee theEmp = new Employee();
+		
+		List<Department> theDepts = empService.getDepts();
+		
+		theModel.addAttribute("employee", theEmp);
+		theModel.addAttribute("departments", theDepts);
+		
+		return "employee-form";
+	}
+	
 	@PostMapping("/save-employee")
 	public String saveEmployee(@Valid @ModelAttribute("employee") Employee theEmp,
 			BindingResult theBindingResult,
 			Model theModel) {
 		
-		//TODO get list of department for combobox
+		// get list of department for combobox
+		List<Department> theDepts = empService.getDepts();
+		theModel.addAttribute("departments", theDepts);
+		
 		
 		//added binding validation
 		
@@ -64,7 +94,9 @@ public class EmployeeController {
 		//get the employee from service
 		Employee theEmployee = empService.getEmployee(theID);
 		
-		//TODO get department list for combobox
+		// get department list for combobox
+		List<Department> theDepts = empService.getDepts();
+		theModel.addAttribute("departments", theDepts);
 		
 		//set employee ad model attribute to prepopulate the form
 		theModel.addAttribute("employee", theEmployee);
@@ -73,5 +105,13 @@ public class EmployeeController {
 		
 	}
 	
+	@GetMapping("/delete")
+	public String deleteEmployee(@RequestParam("empID") int theID) {
+		
+		empService.deleteEmployee(theID);
+		
+		return "redirect:/employee/list";
+		
+	}
 	
 }

@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="employees")
@@ -15,8 +16,11 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	@Column(name="emp_id")
 	private int empID;
+	
+	@NotNull(message="is required")
 	@Column(name="emp_fname")
 	private String empFName;
+	
 	@Column(name="emp_mname")
 	private String empMName;
 	@Column(name="emp_lname")

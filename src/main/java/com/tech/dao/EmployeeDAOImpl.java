@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
+import com.tech.entity.Department;
 import com.tech.entity.Employee;
 
 @Repository
@@ -43,6 +44,31 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		Employee theEmployee = getCurrentSession().get(Employee.class, theID);
 		
 		return theEmployee;
+	}
+
+	@Override
+	public List<Department> getDepts() {
+
+		//create query to get depts and sort by deptname
+		Query<Department> theQuery =
+				getCurrentSession().createQuery("from Department order by deptName", Department.class);
+		
+		//execute query and get result list
+		List<Department> departments = theQuery.getResultList();
+		
+		return departments;
+	}
+
+	@Override
+	public void deleteEmployee(int theID) {
+		
+		Query<?> theQuery =
+				getCurrentSession().createQuery("delete from Employee where empID=:empID");
+ 		
+		theQuery.setParameter("empID", theID);
+		
+		theQuery.executeUpdate();
+		
 	}
 
 }

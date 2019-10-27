@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tech.dao.EmployeeDAO;
+import com.tech.entity.Department;
 import com.tech.entity.Employee;
 
 @Service
@@ -33,6 +34,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Transactional
 	public Employee getEmployee(int theID) {
 		return empDAO.getEmployee(theID);
+	}
+
+	@Override
+	@Transactional
+	public List<Department> getDepts() {
+		return empDAO.getDepts();
+	}
+
+	@Override
+	@Transactional
+	public void deleteEmployee(int theID) {
+		empDAO.deleteEmployee(theID);
 	}
 
 	
