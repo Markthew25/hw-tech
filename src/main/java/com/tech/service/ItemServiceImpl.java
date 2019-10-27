@@ -1,7 +1,6 @@
 package com.tech.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,12 +47,6 @@ public class ItemServiceImpl implements ItemService {
 	@Transactional
 	public List<ItemCategory> getItemCats() {
 		return itemDAO.getItemCats();
-	}
-
-	@Override
-	@Transactional
-	public Map<Integer, String> getItemCats1() {
-		return itemDAO.getItemCats1();
 	}
 
 }
