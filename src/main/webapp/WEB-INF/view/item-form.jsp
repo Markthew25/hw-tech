@@ -29,12 +29,18 @@
 				and when we do a submit, it will submit data by calling setItemID with the appropriate data
 			-->
 			<form:hidden path="itemID" />
+			
+			<i>Fill out the form. Asterisk (*) means required.</i>
 		
 			<table>
 				<tbody>
+				
 					<tr>
-						<td><label>Item name:</label></td>
-						<td><form:input path="itemName"/></td>
+						<td><label>Item name (*) :</label></td>
+						<td>
+							<form:input path="itemName"/>
+							<form:errors path="itemName" Class="error"/>
+						</td>
 					</tr>
 					<tr>
 						<td><label>Brand #:</label></td>
@@ -60,7 +66,7 @@
 							
 								<form:select path = "catID" >
 									<form:option value = "-1" label = "--Please Select"/>
-									<c:forEach var="tempCats" items="${cats }">
+									<c:forEach var="tempCats" items="${category }">
 										<form:option value="${tempCats.catID }"  label="${tempCats.catName }"/>
 				                	</c:forEach>
 				                </form:select>
