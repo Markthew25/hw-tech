@@ -1,19 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-    
-<!DOCTYPE html>
-<html>
-<head>
-
-	<!-- <link type="text/css" rel="stylesheet"
-			href="resources/css/style.css" media="screen"/> -->
-			
-	<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet"/>
-
-<title>Item List</title>
-</head>
-<body>
+ 
+<jsp:include page="header.jsp"/>
 
 	<div id="wrapper">
 	
@@ -29,20 +19,19 @@
 			
 				<input type="submit" value="Add Item"
 						onclick="window.location.href='showAddItemForm'; return false;"
-						class="add-button"/>
+						class="add-button buttonadd"/>
 			
 				<!-- add our html table here -->
 				
-				<table>
-				
-					<tr>
-					
-						<th>Item name</th>
-						<th>Item Status</th>
-						<th>Item Quantity</th>
-						<th>Action</th>
-						
-					 </tr>
+				<table class="table">			
+					<thead class="thead-dark">
+						<tr>			
+							<th>Item name</th>
+							<th>Item Status</th>
+							<th>Item Quantity</th>
+							<th>Action</th>
+						 </tr>
+					 </thead>
 					
 					<!-- Loop through items -->
 					<c:forEach var="tempItem" items="${items }">
@@ -83,5 +72,4 @@
 	
 	</div>
 
-</body>
-</html>
+<jsp:include page="footer.jsp"/>
