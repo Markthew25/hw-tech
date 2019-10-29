@@ -18,6 +18,8 @@
 		</div>
 	</div>
 	
+	
+	
 	<div id="container">
 		<h3>Add new item</h3>
 		
@@ -39,6 +41,7 @@
 						<td><label>Item name (*) :</label></td>
 						<td>
 							<form:input path="itemName"/>
+							<!-- Set up form:error to hold error , in our case is null fields -->
 							<form:errors path="itemName" Class="error"/>
 						</td>
 					</tr>
@@ -75,7 +78,11 @@
 					</tr>
 					<tr>
 						<td><label>Quantity:</label></td>
-						<td><form:input path="itemQty"/></td>
+						<td>
+							<form:input path="itemQty"/>
+							<form:errors path="itemQty" Class="error"/>
+						</td>
+						
 					</tr>
 					<tr>
 						<td><label></label></td>

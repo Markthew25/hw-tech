@@ -88,6 +88,8 @@ public class ItemController {
 		
 		System.out.println("Item name: |" + theItem.getItemName() + "|");
 		
+		System.out.println("BindingResult: " + theBindingResult);
+		
 		if(theBindingResult.hasErrors()) {
 			return "item-form";
 		}else {

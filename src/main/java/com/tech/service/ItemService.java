@@ -1,7 +1,6 @@
 package com.tech.service;
 
 import java.util.List;
-import java.util.Map;
 
 import com.tech.entity.Item;
 import com.tech.entity.ItemCategory;
@@ -17,7 +16,5 @@ public interface ItemService {
 	public void deleteItem(int theID);
 
 	public List<ItemCategory> getItemCats();
-
-	public Map<Integer, String> getItemCats1();
 	
 }

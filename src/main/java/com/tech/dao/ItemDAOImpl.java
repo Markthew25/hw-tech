@@ -1,12 +1,9 @@
 package com.tech.dao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
-import org.springframework.ui.ModelMap;
 
 import com.tech.entity.Item;
 import com.tech.entity.ItemCategory;
@@ -93,23 +90,5 @@ public class ItemDAOImpl extends BaseDAO implements ItemDAO {
 		return cats;
 
 	}
-
-	@Override
-	public Map<Integer, String> getItemCats1() {
-
-		Map <Integer, String> catList1 = new HashMap<Integer, String>();
-		
-		Query<ItemCategory> theQuery =
-				getCurrentSession().createQuery("from ItemCategory", ItemCategory.class);
-		
-		for(int i = 0; theQuery.getFetchSize() > i; i++) {
-//			theQuery.getParameter(position, type)
-			ItemCategory cat = new ItemCategory();
-			catList1.put(cat.getCatID(), cat.getCatName());
-		}
-		
-		return catList1;
-	}
-
 
 }

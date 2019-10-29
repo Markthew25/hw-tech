@@ -1,0 +1,2 @@
+salaries foreign key constraint on employee
+complete the validation in employee and item

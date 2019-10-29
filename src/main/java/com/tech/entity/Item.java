@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -32,8 +34,12 @@ public class Item {
 	private int suppID;
 	@Column(name = "item_status")
 	private String itemStatus;
+	
+	@Max(value=1000, message="must be less than or equal to 1000")
+	@Min(value=10, message="must be greater than or equal to 10")
+	@NotNull(message="is required")
 	@Column(name = "item_qty")
-	private int itemQty;
+	private Integer itemQty;
 
 	public Item() {
 
@@ -96,11 +102,11 @@ public class Item {
 		this.itemStatus = itemStatus;
 	}
 
-	public int getItemQty() {
+	public Integer getItemQty() {
 		return itemQty;
 	}
 
-	public void setItemQty(int itemQty) {
+	public void setItemQty(Integer itemQty) {
 		this.itemQty = itemQty;
 	}
 
