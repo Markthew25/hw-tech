@@ -45,15 +45,6 @@ public class Item {
 
 	}
 
-	public Item(String itemName, int catID, int brandID, int suppID, String itemStatus, int itemQty) {
-		this.itemName = itemName;
-		this.catID = catID;
-		this.brandID = brandID;
-		this.suppID = suppID;
-		this.itemStatus = itemStatus;
-		this.itemQty = itemQty;
-	}
-
 	public int getCatID() {
 		return catID;
 	}
@@ -110,10 +101,5 @@ public class Item {
 		this.itemQty = itemQty;
 	}
 
-	@Override
-	public String toString() {
-		return "Item [itemID=" + itemID + ", itemName=" + itemName + ", catID=" + catID + ", brandID=" + brandID
-				+ ", suppID=" + suppID + ", itemStatus=" + itemStatus + ", itemQty=" + itemQty + "]";
-	}
 
 }
