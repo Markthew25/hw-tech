@@ -11,4 +11,10 @@ public class LoginController {
 		return "hwtech-login";
 	} 
 	
+	@GetMapping("/home")
+	public String homePage() {
+		return "home";
+	}
+	
+	
 }

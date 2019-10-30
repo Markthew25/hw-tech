@@ -19,11 +19,11 @@
 			
 				<input type="submit" value="Add Item"
 						onclick="window.location.href='showAddItemForm'; return false;"
-						class="add-button buttonadd"/>
+						class="btn btn-primary add-button"/>
 			
 				<!-- add our html table here -->
 				
-				<table class="table">			
+				<table class="table table-sm table-striped table-bordered table-hover">			
 					<thead class="thead-dark">
 						<tr>			
 							<th>Item name</th>
