@@ -30,12 +30,13 @@ input {
 	font-size: 16px;
 }
 
-.save {
+.save-button {
 	font-weight: bold;
-	width: 130px; 
+	width: 25%; 
 	padding: 5px 10px; 
 	margin-top: 30px;
-	background: #cccccc;
+	border-color: #546e7a;
+	background-color: #546e7a;
 }
 
 .error {
@@ -47,21 +48,32 @@ table {
 	width:50%;
 }
 
-tr:nth-child(even) {background: #FFFFFF}
-tr:nth-child(odd) {background: #FFFFFF}
+
 
 tr {
 	border-style:none;
 	text-align:left;	
 }
 
-.buttonadd {
+.add-button {
 	margin:10px;
-	padding:10px;
+	border-color: #546e7a;
+	background-color: #546e7a;
+}
+.add-button:hover{
+	background-color: #1565c0;
+}
+
+.add-form{
+	padding: 15px;
 }
 
 #wrapper {width: 100%; margin-top: 0px; }
-#header {width: 70%; background: #09c332; margin-top: 0px; padding:15px 0px 15px 15px;}
+#header {
+	width: 100%;
+	margin-top: 0px; padding:15px 0px 15px 15px;
+	background: #263238;  /* fallback for old browsers */
+	}
 #header h2 {width: 100%; margin:auto; color: #FFFFFF;}
 #container {width: 100%; margin:auto}
 #container h3 {color: #000;}
