@@ -1,19 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-    
-<!DOCTYPE html>
-<html>
-<head>
-
-	<!-- <link type="text/css" rel="stylesheet"
-			href="resources/css/style.css" media="screen"/> -->
-			
-	<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet"/>
-
-<title>Employee List</title>
-</head>
-<body>
+ 
+<jsp:include page="header.jsp"/>
 
 	<div id="wrapper">
 	
@@ -29,20 +19,21 @@
 			
 				<input type="submit" value="Add Employee"
 						onclick="window.location.href='add-employee'; return false;"
-						class="add-button"/>
+						class="btn btn-primary add-button"/>
 			
 				<!-- add our html table here -->
 				
-				<table>
-				
-					<tr>
-					
-						<th>First Name</th>
-						<th>Middle Name</th>
-						<th>Last Name</th>
-						<th>Action</th>
+				<table class="table table-sm table-striped table-bordered table-hover">
+					<thead class="thead-dark">
+						<tr>
 						
-					 </tr>
+							<th>First Name</th>
+							<th>Middle Name</th>
+							<th>Last Name</th>
+							<th>Action</th>
+							
+						</tr>
+					</thead>
 					
 					<!-- Loop through items -->
 					<c:forEach var="tempEmp" items="${employees }">
@@ -59,6 +50,10 @@
 							<c:param name="empID" value="${tempEmp.empID }" />
 						</c:url>
 						
+						<c:url var="assetsLink" value="/employee/assets">
+							<c:param name="empID" value="${tempEmp.empID }" />
+						</c:url>
+						
 						<tr>
 						
 							<td>${tempEmp.empFName }</td>
@@ -67,7 +62,9 @@
 							
 							<td>
 								<!-- display the update link -->
-								<a href="${updateLink }">Update</a> | <a href="${deleteLink }" onclick="if(!(confirm('Are you sure you want to delete this item?'))) return false">Delete</a>
+								<a href="${updateLink }">Update</a> 
+								| <a href="${deleteLink }" onclick="if(!(confirm('Are you sure you want to delete this item?'))) return false">Delete</a>
+								| <a href="${assetsLink }">Assets</a> 
 							</td>
 						
 						</tr>
@@ -83,5 +80,4 @@
 	
 	</div>
 
-</body>
-</html>
+<jsp:include page="footer.jsp"/>

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tech.dao.EmployeeDAO;
 import com.tech.entity.Department;
 import com.tech.entity.Employee;
+import com.tech.entity.Item;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -46,6 +47,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Transactional
 	public void deleteEmployee(int theID) {
 		empDAO.deleteEmployee(theID);
+	}
+
+	@Override
+	@Transactional
+	public List<Item> getEmpAssets(int theID) {
+		return empDAO.getEmpAssets(theID);
 	}
 
 	

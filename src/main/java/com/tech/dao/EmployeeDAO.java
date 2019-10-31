@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import com.tech.entity.Department;
 import com.tech.entity.Employee;
+import com.tech.entity.Item;
 
 public interface EmployeeDAO {
 
@@ -18,5 +19,7 @@ public interface EmployeeDAO {
 	List<Department> getDepts();
 
 	void deleteEmployee(int theID);
+
+	List<Item> getEmpAssets(int theID);
 
 }

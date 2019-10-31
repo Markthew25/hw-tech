@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.tech.entity.Department;
 import com.tech.entity.Employee;
+import com.tech.entity.Item;
 
 @Repository
 public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
@@ -69,6 +70,20 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		
 		theQuery.executeUpdate();
 		
+	}
+
+	@Override
+	public List<Item> getEmpAssets(int theID) {
+		
+		//retrieve employee from database
+		Employee theEmployee = getCurrentSession().get(Employee.class, theID);
+		
+		//get the assets from the employee
+		List<Item> empAssets = theEmployee.getItems();
+		
+		System.out.println(empAssets);
+		
+		return empAssets;
 	}
 
 }

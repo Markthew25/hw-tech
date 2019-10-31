@@ -1,0 +1,43 @@
+make sure everything is ready to merge
+add and commit everything in branch you wanted to merge with master
+push the branch to remote branch
+
+switch from local branch to local master
+*git checkout master
+
+merge local master to local branch
+*git merge name_of_local_branch
+
+push the master to remote master to update the latest 
+*git push
+
+
+create new branch
+git checkout name_of_new_branch
+
+push new branch to create remote branch 
+git push --set-upstream origin hw-tech-asset
+
+
+delete local branch
+git branch -d branch_name
+
+delete remote branch
+$ git push <remote_name> --delete <branch_name>
+
+
+
+
+
+
+PERSISTENCE, ONETOMANY MANYTOMANY
+https://en.wikibooks.org/wiki/Java_Persistence/OneToMany
+
+KEYPOINTS
+
+JPA also defines a ManyToMany relationship, which is similar to a OneToMany relationship except that the inverse relationship (if it were defined) is a ManyToMany relationship. The main difference between a OneToMany and a ManyToMany relationship in JPA is that a ManyToMany always makes use of an intermediate relational join table to store the relationship, whereas a OneToMany can either use a join table, or a foreign key in target object's table referencing the source object table's primary key. If the OneToMany uses a foreign key in the target object's table JPA requires that the relationship be bi-directional (inverse ManyToOne relationship must be defined in the target object), and the source object must use the mappedBy attribute to define the mapping.
+
+Getters and Setters
+The relationship is bi-directional so, as the application updates one side of the relationship, the other side should also get updated, and be in sync. In JPA, as in Java in general it is the responsibility of the application, or the object model to maintain relationships. If your application adds to one side of a relationship, then it must add to the other side.
+
+This can be resolved through add or set methods in the object model that handle both sides of the relationships, so the application code does not need to worry about it. There are two ways to go about this, you can either only add the relationship maintenance code to one side of the relationship, and only use the setter from one side (such as making the other side protected), or add it to both sides and ensure you avoid an infinite loop.

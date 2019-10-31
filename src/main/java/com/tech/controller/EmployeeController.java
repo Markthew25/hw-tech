@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tech.entity.Department;
 import com.tech.entity.Employee;
+import com.tech.entity.Item;
 import com.tech.service.EmployeeService;
 
 @Controller
@@ -111,6 +112,26 @@ public class EmployeeController {
 		empService.deleteEmployee(theID);
 		
 		return "redirect:/employee/list";
+		
+	}
+	
+	@GetMapping("/assets")
+	public String employeeAssets(@RequestParam("empID") int theID, Model theModel) {
+		
+		//get the employee from service
+		Employee theEmployee = empService.getEmployee(theID);
+		
+		
+		//get assets
+		List<Item> empAssets = empService.getEmpAssets(theID);
+		
+		//set employee ad model attribute to prepopulate the form
+		theModel.addAttribute("employee", theEmployee);
+		
+		//set the model for employee's assets
+		theModel.addAttribute("empAssets", empAssets);
+		
+		return "employee-assets";
 		
 	}
 	

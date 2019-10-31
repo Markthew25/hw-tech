@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import com.tech.entity.Department;
 import com.tech.entity.Employee;
+import com.tech.entity.Item;
 
 public interface EmployeeService {
 
@@ -18,6 +19,8 @@ public interface EmployeeService {
 	public List<Department> getDepts();
 
 	public void deleteEmployee(int theID);
+
+	public List<Item> getEmpAssets(int theID);
 	
 	
 }

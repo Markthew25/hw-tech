@@ -97,6 +97,12 @@ public class Employee {
 		items.add(theItem);
 		
 	}
+
+	@Override
+	public String toString() {
+		return "Employee [empID=" + empID + ", empFName=" + empFName + ", empMName=" + empMName + ", empLName="
+				+ empLName + ", deptID=" + deptID + ", items=" + items + "]";
+	}
 	
 	
 }
