@@ -6,9 +6,12 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -35,20 +38,18 @@ public class Employee {
 	@Column(name="dept_id")
 	private int deptID;
 	
-//	@OneToMany(mappedBy="employee", cascade=CascadeType.ALL)
-//	private List<Asset> assets;
+	@OneToMany(fetch=FetchType.LAZY,
+			cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	@JoinTable(
+			name="assets",
+			joinColumns=@JoinColumn(name="emp_id"),
+			inverseJoinColumns=@JoinColumn(name="item_id")
+			)
+	private List<Item> items;
 	
 	public Employee() {
 		
 	}
-	
-//	public List<Asset> getAssets() {
-//		return assets;
-//	}
-//
-//	public void setAssets(List<Asset> assets) {
-//		this.assets = assets;
-//	}
 
 	public int getEmpID() {
 		return empID;
@@ -79,6 +80,22 @@ public class Employee {
 	}
 	public void setDeptID(int depID) {
 		this.deptID = depID;
+	}
+	public List<Item> getItems() {
+		return items;
+	}
+	public void setItems(List<Item> items) {
+		this.items = items;
+	}
+	
+	//convience method
+	public void addItem(Item theItem) {
+		if(items==null) {
+			items = new ArrayList<Item>();
+		}
+		
+		items.add(theItem);
+		
 	}
 	
 	

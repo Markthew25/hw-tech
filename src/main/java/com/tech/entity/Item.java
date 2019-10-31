@@ -1,10 +1,17 @@
 package com.tech.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -41,6 +48,15 @@ public class Item {
 	@Column(name = "item_qty")
 	private Integer itemQty;
 
+	@ManyToOne(fetch=FetchType.LAZY,
+			cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	@JoinTable(
+			name="assets",
+			joinColumns=@JoinColumn(name="item_id"),
+			inverseJoinColumns=@JoinColumn(name="emp_id")
+			)
+	private List<Employee> employees;
+		
 	public Item() {
 
 	}
@@ -101,5 +117,12 @@ public class Item {
 		this.itemQty = itemQty;
 	}
 
+	@Override
+	public String toString() {
+		return "Item [itemID=" + itemID + ", itemName=" + itemName + ", catID=" + catID + ", brandID=" + brandID
+				+ ", suppID=" + suppID + ", itemStatus=" + itemStatus + ", itemQty=" + itemQty + "]";
+	}
+
+	
 
 }
