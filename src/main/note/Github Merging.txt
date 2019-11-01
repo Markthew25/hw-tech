@@ -25,8 +25,13 @@ git branch -d branch_name
 delete remote branch
 $ git push <remote_name> --delete <branch_name>
 
+Get the remote branch and create it's local branch
+$ git checkout --track origin/newsletter
+Branch newsletter set up to track remote branch newsletter from origin.
+Switched to a new branch 'newsletter'
 
-
+update the list of local remote branch
+git remote update origin --prune
 
 
 

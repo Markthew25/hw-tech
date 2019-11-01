@@ -1,2 +1,10 @@
 salaries foreign key constraint on employee
 complete the validation in employee and item
+
+https://stackoverflow.com/questions/26652679/passing-parameters-from-jsp-to-spring-controller-method
+
+https://stackoverflow.com/questions/13442678/spring-mvc-how-take-the-parameter-value-of-a-get-http-request-in-my-controller-m/13442732#13442732
+
+https://stackoverflow.com/questions/13242394/spring-mvc-multiple-modelattribute-on-the-same-form
+
+https://javarevisited.blogspot.com/2018/04/5-spring-framework-books-experienced-Java-developers-2018.html?fbclid=IwAR14ZTxKo1rN-2FDPSVTZoJlcF2A5C0RAbwHNNKOFcx8KYxmIz97LygdxHU#ixzz61ZXHWdKI

@@ -86,4 +86,29 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		return empAssets;
 	}
 
+	@Override
+	public List<Item> getItemsAvailable() {
+		
+		//create query to get depts and sort by deptname
+		Query<Item> theQuery =
+				getCurrentSession().createQuery("from Item order where itemStatus is true", Item.class);
+
+		//execute query and get result list
+		List<Item> itemsAvail = theQuery.getResultList();
+		
+		return itemsAvail;
+	}
+
+	@Override
+	public void saveAsset(int theEmpID, int theItemID) {
+		
+		Employee theEmployee = getCurrentSession().get(Employee.class, theEmpID);
+		Item theItem = getCurrentSession().get(Item.class, theItemID);
+		
+		theEmployee.addItem(theItem);
+		
+		getCurrentSession().save(theEmployee);
+		
+	}
+
 }

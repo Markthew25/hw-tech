@@ -47,8 +47,8 @@
 						<td>
 							<form:select path="itemStatus">
 								<form:option value="" label="--Please Select"/>
-								<form:option value="Okay">Available</form:option>
-								<form:option value="Not Okay">Not Available</form:option>
+								<form:option value="1">Available</form:option>
+								<form:option value="0">Not Available</form:option>
 							</form:select>
 						</td>
 					</tr>

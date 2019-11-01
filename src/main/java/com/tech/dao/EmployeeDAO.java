@@ -22,4 +22,8 @@ public interface EmployeeDAO {
 
 	List<Item> getEmpAssets(int theID);
 
+	List<Item> getItemsAvailable();
+
+	void saveAsset(int theEmpID, int theItemID);
+
 }

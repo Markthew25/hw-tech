@@ -17,17 +17,18 @@
 		
 		<div id="container">
 			
-			<form:form action="add-asset" modelAttribute="employee" method="POST">
+			<form:form modelAttribute="employee" method="POST">
 			
 			<form:hidden path="empID" />
 			
+			<c:url var="addAssetLink" value="/employee/add-asset">
+				<c:param name="empID" value="${employee.empID }" />
+			</c:url>
+	
 			<form:label path="">Employee Name: ${employee.empFName} ${employee.empLName} </form:label>
 					
 			<div id="content">
-			
-				<input type="submit" value="Add Employee"
-						onclick="window.location.href='add-employee'; return false;"
-						class="btn btn-primary add-button"/>
+		
 			
 				<!-- add our html table here -->
 				
@@ -60,6 +61,9 @@
 				</table>
 				
 			</div>
+			
+			<a class="btn btn-primary add-button" href="${addAssetLink }">Add Asset</a> 
+			
 			</form:form>
 		</div>
 		

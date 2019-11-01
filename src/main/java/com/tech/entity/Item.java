@@ -33,11 +33,12 @@ public class Item {
 	@Column(name = "supp_id")
 	private int suppID;
 	@Column(name = "item_status")
-	private String itemStatus;
+	private Boolean itemStatus;
 	
 	@Max(value=1000, message="must be less than or equal to 1000")
 	@Min(value=10, message="must be greater than or equal to 10")
 	@NotNull(message="is required")
+	
 	@Column(name = "item_qty")
 	private Integer itemQty;
 
@@ -94,11 +95,11 @@ public class Item {
 		this.itemName = itemName;
 	}
 
-	public String getItemStatus() {
+	public Boolean getItemStatus() {
 		return itemStatus;
 	}
 
-	public void setItemStatus(String itemStatus) {
+	public void setItemStatus(Boolean itemStatus) {
 		this.itemStatus = itemStatus;
 	}
 

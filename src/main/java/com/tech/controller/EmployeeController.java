@@ -135,4 +135,36 @@ public class EmployeeController {
 		
 	}
 	
+	@GetMapping("/add-asset")
+	public String addAsset(@RequestParam("empID") int theID, Model theModel) {
+		
+		//get the employee from service
+		Employee theEmployee = empService.getEmployee(theID);
+		
+		//get all items available
+		List<Item> itemsAvail = empService.getItemsAvailable();
+		
+		//set employee ad model attribute to prepopulate the form
+		theModel.addAttribute("employee", theEmployee);
+		theModel.addAttribute("itemsAvail", itemsAvail);
+		
+		return "add-asset";
+		
+	}
+	
+	@GetMapping("/save-asset")
+	public String saveAsset(
+			@RequestParam("empID") int theEmpID,
+			@RequestParam("itemID") int theItemID,
+			Model theModel) {	
+		
+		
+		//added binding validation
+		
+		empService.saveAsset(theEmpID, theItemID);
+	
+		return "redirect:/employee/list";
+		
+	}
+	
 }
