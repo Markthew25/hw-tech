@@ -156,14 +156,14 @@ public class EmployeeController {
 	public String saveAsset(
 			@RequestParam("empID") int theEmpID,
 			@RequestParam("itemID") int theItemID,
-			Model theModel) {	
+			Model theModel) {
 		
 		
 		//added binding validation
 		
 		empService.saveAsset(theEmpID, theItemID);
 	
-		return "redirect:/employee/list";
+		return "redirect:/employee/assets?empID=" + theEmpID;
 		
 	}
 	

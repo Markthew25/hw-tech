@@ -91,7 +91,7 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		
 		//create query to get depts and sort by deptname
 		Query<Item> theQuery =
-				getCurrentSession().createQuery("from Item order where itemStatus is true", Item.class);
+				getCurrentSession().createQuery("from Item where itemStatus is true", Item.class);
 
 		//execute query and get result list
 		List<Item> itemsAvail = theQuery.getResultList();
@@ -108,6 +108,15 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		theEmployee.addItem(theItem);
 		
 		getCurrentSession().save(theEmployee);
+		
+		//create query to get depts and sort by dept name
+		Query<?> theQuery =
+				getCurrentSession().createQuery("update Item set itemStatus=:itemStatus where itemID=:itemID");
+		
+		theQuery.setParameter("itemStatus", false);
+		theQuery.setParameter("itemID", theItemID);
+		
+		theQuery.executeUpdate();
 		
 	}
 
