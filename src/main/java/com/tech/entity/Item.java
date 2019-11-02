@@ -1,10 +1,15 @@
 package com.tech.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -32,6 +37,7 @@ public class Item {
 	private int brandID;
 	@Column(name = "supp_id")
 	private int suppID;
+	
 	@Column(name = "item_status")
 	private Boolean itemStatus;
 	
@@ -42,14 +48,14 @@ public class Item {
 	@Column(name = "item_qty")
 	private Integer itemQty;
 
-//	@ManyToOne(
-//			cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-//	@JoinTable(
-//			name="assets",
-//			joinColumns=@JoinColumn(name="item_id"),
-//			inverseJoinColumns=@JoinColumn(name="emp_id")
-//			)
-//	private List<Employee> employees;
+	@ManyToOne(fetch=FetchType.LAZY,
+			cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	@JoinTable(
+			name="assets",
+			joinColumns=@JoinColumn(name="item_id", insertable=false, updatable=false),
+			inverseJoinColumns=@JoinColumn(name="emp_id", insertable=false, updatable=false)
+			)
+	private Employee employee;
 		
 	public Item() {
 
@@ -111,22 +117,29 @@ public class Item {
 		this.itemQty = itemQty;
 	}
 	
-//	//convience method
-//		public void addItem(Employee theEmployee) {
-//			if(employees==null) {
-//				employees = new ArrayList<Employee>();
-//			}
-//			
-//			employees.add(theEmployee);
-//			
-//		}
+	public Employee getEmployee() {
+		return employee;
+	}
 
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	//convience method
+//	public void addEmployee(Employee theEmployee) {
+//		if(employee==null) {
+//			employee = new Employee();
+//		}
+//		
+//		employee.getItems();
+//		
+//	}
+	
 	@Override
 	public String toString() {
 		return "Item [itemID=" + itemID + ", itemName=" + itemName + ", catID=" + catID + ", brandID=" + brandID
 				+ ", suppID=" + suppID + ", itemStatus=" + itemStatus + ", itemQty=" + itemQty + "]";
 	}
-
 	
 
 }

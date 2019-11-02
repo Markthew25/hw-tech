@@ -18,7 +18,7 @@
 			<div id="content">
 			
 				<input type="submit" value="Add Item"
-						onclick="window.location.href='showAddItemForm'; return false;"
+						onclick="window.location.href='add-item'; return false;"
 						class="btn btn-primary add-button"/>
 			
 				<!-- add our html table here -->
@@ -39,12 +39,12 @@
 						<!--  construct an update link with item id 
 							so while looping through items, we can get item id.
 						-->
-						<c:url var="updateLink" value="/item/showUpdateItemForm">
+						<c:url var="updateLink" value="/item/update-item">
 							<c:param name="itemID" value="${tempItem.itemID }" />
 						</c:url>
 						
 						<!-- Construct dele link with item id -->
-						<c:url var="deleteLink" value="/item/delete">
+						<c:url var="deleteLink" value="/item/delete-item">
 							<c:param name="itemID" value="${tempItem.itemID }" />
 						</c:url>
 						

@@ -51,7 +51,7 @@
 							
 							<td>
 								<!-- display the update link -->
-								<a href="${removeAssetLink }" onclick="if(!(confirm('Are you sure you want to delete this item?'))) return false">Remove</a>
+								<a href="${removeAssetLink }" onclick="if(!(confirm('Are you sure you want to remove this item from ${employee.empFName} ${employee.empLName}?'))) return false">Remove</a>
 							</td>
 						
 						</tr>

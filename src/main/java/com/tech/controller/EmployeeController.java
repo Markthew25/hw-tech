@@ -53,7 +53,7 @@ public class EmployeeController {
 		
 	}
 	
-	@GetMapping("/add-employee")
+	@PostMapping("/add-employee")
 	public String addEmployee(Model theModel) {
 		
 		//create model attribute

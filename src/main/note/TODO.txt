@@ -1,6 +1,11 @@
 salaries foreign key constraint on employee
 complete the validation in employee and item
 
+AVOID UPDATE AND INSERT IN JOIN TABLE
+https://www.logicbig.com/tutorials/java-ee-tutorial/jpa/one-to-many-bidirectional-join-table.html
+
+
+PASSING PARAMETERS
 https://stackoverflow.com/questions/26652679/passing-parameters-from-jsp-to-spring-controller-method
 
 https://stackoverflow.com/questions/13442678/spring-mvc-how-take-the-parameter-value-of-a-get-http-request-in-my-controller-m/13442732#13442732
