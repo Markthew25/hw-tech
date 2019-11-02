@@ -26,4 +26,6 @@ public interface EmployeeDAO {
 
 	void saveAsset(int theEmpID, int theItemID);
 
+	void removeAsset(int theEmpID, int theItemID);
+
 }

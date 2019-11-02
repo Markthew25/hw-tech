@@ -56,6 +56,7 @@ public class ItemDAOImpl extends BaseDAO implements ItemDAO {
 		//retrieve/read from database using the primary key
 		Item theItem = getCurrentSession().get(Item.class, theID);
 		
+//		System.out.println("CUSTODIAN NAME = " + theItem.getEmployee().getEmpFName());
 		
 		return theItem;
 	}

@@ -67,5 +67,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 		empDAO.saveAsset(theEmpID, theItemID);
 	}
 
+	@Override
+	@Transactional
+	public void removeAsset(int theEmpID, int theItemID) {
+		empDAO.removeAsset(theEmpID, theItemID);
+	}
+
 	
 }

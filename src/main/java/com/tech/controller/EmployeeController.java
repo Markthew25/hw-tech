@@ -53,7 +53,7 @@ public class EmployeeController {
 		
 	}
 	
-	@PostMapping("/add-employee")
+	@GetMapping("/add-employee")
 	public String addEmployee(Model theModel) {
 		
 		//create model attribute
@@ -166,5 +166,17 @@ public class EmployeeController {
 		return "redirect:/employee/assets?empID=" + theEmpID;
 		
 	}
+	
+	@GetMapping("/remove-asset")
+	public String removeAsset(
+		@RequestParam("empID") int theEmpID,
+		@RequestParam("itemID") int theItemID,
+		Model theModel) {
+		
+		empService.removeAsset(theEmpID, theItemID);
+		
+		return "redirect:/employee/assets?empID=" + theEmpID;
+	}
+	
 	
 }

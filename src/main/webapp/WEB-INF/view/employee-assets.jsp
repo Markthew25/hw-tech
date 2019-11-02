@@ -45,6 +45,11 @@
 					<!-- Loop through items -->
 					<c:forEach var="tempAssets" items="${empAssets }">
 						
+						<c:url var="removeAssetLink" value="/employee/remove-asset">
+							<c:param name="empID" value="${employee.empID }" />
+							<c:param name="itemID" value="${tempAssets.itemID }"></c:param>
+						</c:url>
+						
 						<tr>
 						
 							<td>${tempAssets.itemName }</td>
