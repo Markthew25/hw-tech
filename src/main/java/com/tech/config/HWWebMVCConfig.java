@@ -14,8 +14,12 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages= {
 		"com.tech.controller"
 })
+//SPRING WEB CONFIGURATION
 public class HWWebMVCConfig implements WebMvcConfigurer {
 
+//	@Autowired
+//    private EntityManagerFactory emf;
+			
 	@Bean
     public InternalResourceViewResolver resolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
@@ -25,7 +29,6 @@ public class HWWebMVCConfig implements WebMvcConfigurer {
         return resolver;
     }
 
-
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
             .addResourceHandler("/resources/**")
@@ -33,4 +36,13 @@ public class HWWebMVCConfig implements WebMvcConfigurer {
         
     }
 	
+    // RESOLVING 
+ 	//failed to lazily initialize a collection of role ERROR
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        OpenEntityManagerInViewInterceptor interceptor = new OpenEntityManagerInViewInterceptor();
+//        interceptor.setEntityManagerFactory(emf);
+//        registry.addWebRequestInterceptor(interceptor);
+//    }
+    
 }

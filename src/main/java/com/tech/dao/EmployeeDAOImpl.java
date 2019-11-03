@@ -63,27 +63,29 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 	@Override
 	public void deleteEmployee(int theID) {
 
-		//ADDED TO TEST************************
-		//TRY TO WRITE METHOD CHECKER IF ITEM HAS CUSTODIAN IN ITEM DAO
-		List<Item> empItems = getEmpAssets(theID);
-			
-		System.out.println("******EMPLOYEE ITEMS" + empItems);
+		Employee employee = getEmployee(theID);
 		
-		for(int index = 0; index < empItems.size(); index++) {
-			
-			Query<?> theQuery2 =
-					getCurrentSession().createQuery("update Item set itemStatus=:itemStatus where itemID=:itemID");
-			
-			
-			int itemAssetID = empItems.get(index).getItemID();
-			
-			theQuery2.setParameter("itemStatus", true);
-			theQuery2.setParameter("itemID", itemAssetID );
-			
-			theQuery2.executeUpdate();
-			
-		}
+		List<Item> empItems = employee.getItems();
+		
+		Query<?> theQuery2 =
+				getCurrentSession().createQuery("update Item set itemStatus=:itemStatus where itemID=:itemID");
+		
+		
+		if(!empItems.isEmpty()) {
+			for(int index = 0; index < empItems.size(); index++) {
+
+				int itemAssetID = empItems.get(index).getItemID();
 				
+				theQuery2.setParameter("itemStatus", true);
+				theQuery2.setParameter("itemID", itemAssetID );
+				
+				theQuery2.executeUpdate();
+				
+				
+			}			
+		}else {
+			System.out.println("NO ITEMS***************");
+		}
 		
 		Query<?> theQuery =
 				getCurrentSession().createQuery("delete from Employee where empID=:empID");
@@ -93,18 +95,6 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		theQuery.executeUpdate();
 		
 		
-	}
-
-	@Override
-	public List<Item> getEmpAssets(int theID) {
-		
-		//retrieve employee from database
-		Employee theEmployee = getCurrentSession().get(Employee.class, theID);
-		
-		//get the assets from the employee
-		List<Item> empAssets = theEmployee.getItems();
-		
-		return empAssets;
 	}
 
 	@Override

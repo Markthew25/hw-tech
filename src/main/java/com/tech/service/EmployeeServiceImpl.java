@@ -51,12 +51,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	@Transactional
-	public List<Item> getEmpAssets(int theID) {
-		return empDAO.getEmpAssets(theID);
-	}
-
-	@Override
-	@Transactional
 	public List<Item> getItemsAvailable() {
 		return empDAO.getItemsAvailable();
 	}

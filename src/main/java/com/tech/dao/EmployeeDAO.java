@@ -19,9 +19,7 @@ public interface EmployeeDAO {
 	List<Department> getDepts();
 
 	void deleteEmployee(int theID);
-
-	List<Item> getEmpAssets(int theID);
-
+	
 	List<Item> getItemsAvailable();
 
 	void saveAsset(int theEmpID, int theItemID);

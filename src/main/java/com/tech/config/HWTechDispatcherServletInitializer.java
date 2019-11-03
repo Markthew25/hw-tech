@@ -2,6 +2,13 @@ package com.tech.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+/*
+ * HWTechDispatcherServletInitializer will be automatically detected by Spring, 
+ * because it's a subclass of AbstractAnnotationConfigDispatcherServletInitializer, 
+ * which is an implementation of WebApplicationInitializer. And Spring Web will automatically be detected by the Servlet container, 
+ * because Spring Web contains a service provider implementation of ServletContainerInitializer by default, which gets detected automatically. 
+ * This implementation is called SpringServletContainerInitializer.
+ */
 public class HWTechDispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
@@ -22,4 +29,11 @@ public class HWTechDispatcherServletInitializer extends AbstractAnnotationConfig
 		};
 	}
 
+	//OPTION 2 for resolving lazyloading error, (NO NEED TO EAGER Loading)
+//	@Override
+//    protected Filter[] getServletFilters() {
+//        return new Filter[]{new OpenEntityManagerInViewFilter()};
+//    }
+	
+	
 }

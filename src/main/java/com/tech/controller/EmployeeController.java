@@ -117,13 +117,13 @@ public class EmployeeController {
 	
 	@GetMapping("/assets")
 	public String employeeAssets(@RequestParam("empID") int theID, Model theModel) {
-		
+
 		//get the employee from service
 		Employee theEmployee = empService.getEmployee(theID);
 		
-		
 		//get assets
-		List<Item> empAssets = empService.getEmpAssets(theID);
+		//THE TRANSACTION IS ALREADY CLOSE WHEN WE CALL THIS, SO THAT OUR LAZY LOADING ON EMPLOYEE WONT WORK
+		List<Item> empAssets = theEmployee.getItems();
 		
 		//set employee ad model attribute to prepopulate the form
 		theModel.addAttribute("employee", theEmployee);
