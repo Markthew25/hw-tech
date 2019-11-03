@@ -67,9 +67,16 @@
 				
 			</div>
 			
-			<a class="btn btn-primary add-button" href="${addAssetLink }">Add Asset</a> 
-			
+
 			</form:form>
+			
+			<div style="clear;both;"></div>
+			
+			<p>
+				<a class="btn btn-primary add-button" href="${addAssetLink }">Add Asset</a> 
+				<a href="${pageContext.request.contextPath}/employee/list" >Back</a>
+			</p>
+			
 		</div>
 		
 		

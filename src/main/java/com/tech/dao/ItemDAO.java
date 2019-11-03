@@ -3,7 +3,7 @@ package com.tech.dao;
 import java.util.List;
 
 import com.tech.entity.Item;
-import com.tech.entity.ItemCategory;
+import com.tech.entity.Category;
 
 public interface ItemDAO {
 
@@ -15,6 +15,6 @@ public interface ItemDAO {
 
 	public void deleteItem(int theID);
 
-	public List<ItemCategory> getItemCats();
+	public List<Category> getItemCats();
 
 }

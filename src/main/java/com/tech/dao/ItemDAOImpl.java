@@ -6,7 +6,7 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.tech.entity.Item;
-import com.tech.entity.ItemCategory;
+import com.tech.entity.Category;
 
 @Repository
 public class ItemDAOImpl extends BaseDAO implements ItemDAO {
@@ -76,17 +76,17 @@ public class ItemDAOImpl extends BaseDAO implements ItemDAO {
 	}
 
 	@Override
-	public List<ItemCategory> getItemCats() {
+	public List<Category> getItemCats() {
 		
 		//get the current hibernate session
 //		Session currentSession = sessionFactory.getCurrentSession(); // commented out, to try BaseDAO getCurrentSession
 		
 		//create a query.. and sort by itemName
-		Query <ItemCategory> theQuery =
-				getCurrentSession().createQuery(" from ItemCategory order by catName", ItemCategory.class);
+		Query <Category> theQuery =
+				getCurrentSession().createQuery(" from Category order by catName", Category.class);
 		
 		//execute query and get result list
-		List<ItemCategory> cats = theQuery.getResultList(); 
+		List<Category> cats = theQuery.getResultList(); 
 		
 		//return the results
 		return cats;
