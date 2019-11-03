@@ -3,14 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-	<title>Add Item</title>
-	<link href="<c:url value="/resources/css/add-style.css" />" rel="stylesheet"/>
-</head>
-<body>
+<jsp:include page="header.jsp"/>
 
 	<div id="wrapper">
 		<div id="header">
@@ -18,7 +11,7 @@
 		</div>
 	</div>
 	
-	<div id="container">
+	<div id="container" class="add-form">
 		<h3>Add new employee</h3>
 		
 		<form:form action="save-employee" modelAttribute="employee" method="POST">
