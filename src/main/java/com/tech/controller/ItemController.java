@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.tech.entity.Item;
+import com.tech.entity.Brand;
 import com.tech.entity.Category;
+import com.tech.entity.Item;
+import com.tech.entity.Supplier;
 import com.tech.service.ItemService;
 
 @Controller
@@ -67,10 +69,15 @@ public class ItemController {
 		//create model attribute
 		Item theItem = new Item();
 				
-		List<Category> theCats= itemService.getItemCats();
+		List<Category> theCats = itemService.getItemCats();
+		List<Brand> theBrands = itemService.getItemBrands();
+		List<Supplier> theSuppliers = itemService.getItemSuppliers();
+		
+		theModel.addAttribute("categories", theCats);
+		theModel.addAttribute("brands", theBrands);
+		theModel.addAttribute("suppliers", theSuppliers);
 		
 		theModel.addAttribute("item", theItem);
-		theModel.addAttribute("category", theCats);
 		
 		return "item-form";
 	}
@@ -80,8 +87,13 @@ public class ItemController {
 			BindingResult theBindingResult,
 			Model theModel) {
 		
-		List<Category> theCats= itemService.getItemCats();
-		theModel.addAttribute("category", theCats);
+		List<Category> theCats = itemService.getItemCats();
+		List<Brand> theBrands = itemService.getItemBrands();
+		List<Supplier> theSuppliers = itemService.getItemSuppliers();
+		
+		theModel.addAttribute("categories", theCats);
+		theModel.addAttribute("brands", theBrands);
+		theModel.addAttribute("suppliers", theSuppliers);
 		
 		//save the item using our service
 		// and add validation for empty field
@@ -105,11 +117,17 @@ public class ItemController {
 		
 		// get the item from the service
 		Item theItem = itemService.getItem(theID);
+		
 		List<Category> theCats= itemService.getItemCats();
+		List<Brand> theBrands = itemService.getItemBrands();
+		List<Supplier> theSuppliers = itemService.getItemSuppliers();
 		
 		//set item as model attribute to prepopulate the form
 		theModel.addAttribute("item", theItem);
-		theModel.addAttribute("category", theCats);
+		
+		theModel.addAttribute("categories", theCats);
+		theModel.addAttribute("brands", theBrands);
+		theModel.addAttribute("suppliers", theSuppliers);
 		
 		//send over to our form
 		return "item-form";
@@ -124,30 +142,5 @@ public class ItemController {
 		return "redirect:/item/list";
 		
 	}
-	
-//	@ModelAttribute("categoryList")
-//	   public List<String> getNumbersList() {
-//	      List<String> catList = new ArrayList<String>();
-//	      catList.add("Mouse");
-//	      catList.add("Keyboard");
-//	      catList.add("Operating System");
-//	      catList.add("Others");
-//	      return catList;
-//	}
-	
-//	@ModelAttribute("categoryList")
-//	public List<ItemCategory> catList(Model theModel) {
-//		
-//		//get customer from the item service
-//		//and the item service will get data from itemDAO
-//		List<ItemCategory> theCats= itemService.getItemCats();
-//		
-//		//add the customer to the model
-////		theModel.addAttribute("cats", theCats);
-//		System.out.println(theCats);
-//		
-//		return theCats;
-//		
-//	}
 	
 }

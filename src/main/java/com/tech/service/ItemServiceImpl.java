@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tech.dao.ItemDAO;
 import com.tech.entity.Item;
+import com.tech.entity.Supplier;
+import com.tech.entity.Brand;
 import com.tech.entity.Category;
 
 @Service
@@ -25,10 +27,8 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	@Transactional
-	public void saveItem(Item theItem) {
-		
+	public void saveItem(Item theItem) {	
 		itemDAO.saveItem(theItem);
-		
 	}
 
 	@Override
@@ -47,6 +47,18 @@ public class ItemServiceImpl implements ItemService {
 	@Transactional
 	public List<Category> getItemCats() {
 		return itemDAO.getItemCats();
+	}
+
+	@Override
+	@Transactional
+	public List<Brand> getItemBrands() {
+		return itemDAO.getItemBrands();
+	}
+
+	@Override
+	@Transactional
+	public List<Supplier> getItemSuppliers() {
+		return itemDAO.getItemSuppliers();
 	}
 
 }

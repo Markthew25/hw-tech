@@ -35,14 +35,6 @@
 						</td>
 					</tr>
 					<tr>
-						<td><label>Brand #:</label></td>
-						<td><form:input path="brandID"/></td>
-					</tr>
-					<tr>
-						<td><label>Supplier #:</label></td>
-						<td><form:input path="suppID"/></td>
-					</tr>
-					<tr>
 						<td><label>Status:</label></td>
 						<td>
 							<form:select path="itemStatus">
@@ -57,19 +49,30 @@
 						<td>
 							<form:select path = "catID" >
 								<form:option value = "-1" label = "--Please Select"/>
-								<c:forEach var="tempCats" items="${category }">
+								<c:forEach var="tempCats" items="${categories }">
 									<form:option value="${tempCats.catID }"  label="${tempCats.catName }"/>
 			                	</c:forEach>
 			                </form:select>
 						</td>
 					</tr>
 					<tr>
-						<td><form:label path="catID">Category:</form:label></td>
+						<td><form:label path="brandID">Brand:</form:label></td>
 						<td>
-							<form:select path = "catID" >
+							<form:select path = "brandID" >
 								<form:option value = "-1" label = "--Please Select"/>
-								<c:forEach var="tempCats" items="${category }">
-									<form:option value="${tempCats.catID }"  label="${tempCats.catName }"/>
+								<c:forEach var="tempBrands" items="${brands }">
+									<form:option value="${tempBrands.brandID }"  label="${tempBrands.brandName }"/>
+			                	</c:forEach>
+			                </form:select>
+						</td>
+					</tr>
+					<tr>
+						<td><form:label path="suppID">Supplier:</form:label></td>
+						<td>
+							<form:select path = "suppID" >
+								<form:option value = "-1" label = "--Select Select"/>
+								<c:forEach var="tempSupps" items="${suppliers }">
+									<form:option value="${tempSupps.suppID }"  label="${tempSupps.suppName }"/>
 			                	</c:forEach>
 			                </form:select>
 						</td>
