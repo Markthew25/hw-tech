@@ -62,6 +62,28 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 
 	@Override
 	public void deleteEmployee(int theID) {
+
+		//ADDED TO TEST************************
+		//TRY TO WRITE METHOD CHECKER IF ITEM HAS CUSTODIAN IN ITEM DAO
+		List<Item> empItems = getEmpAssets(theID);
+			
+		System.out.println("******EMPLOYEE ITEMS" + empItems);
+		
+		for(int index = 0; index < empItems.size(); index++) {
+			
+			Query<?> theQuery2 =
+					getCurrentSession().createQuery("update Item set itemStatus=:itemStatus where itemID=:itemID");
+			
+			
+			int itemAssetID = empItems.get(index).getItemID();
+			
+			theQuery2.setParameter("itemStatus", true);
+			theQuery2.setParameter("itemID", itemAssetID );
+			
+			theQuery2.executeUpdate();
+			
+		}
+				
 		
 		Query<?> theQuery =
 				getCurrentSession().createQuery("delete from Employee where empID=:empID");
@@ -69,6 +91,7 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		theQuery.setParameter("empID", theID);
 		
 		theQuery.executeUpdate();
+		
 		
 	}
 
@@ -80,7 +103,7 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		
 		//get the assets from the employee
 		List<Item> empAssets = theEmployee.getItems();
-
+		
 		return empAssets;
 	}
 
@@ -108,13 +131,7 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		getCurrentSession().save(theEmployee);
 		
 		//update the item's availability to false
-		Query<?> theQuery =
-				getCurrentSession().createQuery("update Item set itemStatus=:itemStatus where itemID=:itemID");
-		
-		theQuery.setParameter("itemStatus", false);
-		theQuery.setParameter("itemID", theItemID);
-		
-		theQuery.executeUpdate();
+		itemIsNotAvailable(theItemID);
 		
 	}
 
@@ -134,6 +151,11 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		items.remove(item);
 		
 		//create query to make the item available for new custodian
+		itemIsAvailable(theItemID);
+		
+	}
+
+	private void itemIsAvailable(int theItemID) {
 		Query<?> theQuery =
 				getCurrentSession().createQuery("update Item set itemStatus=:itemStatus where itemID=:itemID");
 		
@@ -141,7 +163,17 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		theQuery.setParameter("itemID", theItemID);
 		
 		theQuery.executeUpdate();
+	}
+	
+
+	private void itemIsNotAvailable(int theItemID) {
+		Query<?> theQuery =
+				getCurrentSession().createQuery("update Item set itemStatus=:itemStatus where itemID=:itemID");
 		
+		theQuery.setParameter("itemStatus", false);
+		theQuery.setParameter("itemID", theItemID);
+		
+		theQuery.executeUpdate();
 	}
 
 }
