@@ -80,9 +80,7 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		
 		//get the assets from the employee
 		List<Item> empAssets = theEmployee.getItems();
-		
-		System.out.println(empAssets);
-		
+
 		return empAssets;
 	}
 
@@ -91,7 +89,7 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		
 		//create query to get depts and sort by deptname
 		Query<Item> theQuery =
-				getCurrentSession().createQuery("from Item order where itemStatus is true", Item.class);
+				getCurrentSession().createQuery("from Item where itemStatus is true", Item.class);
 
 		//execute query and get result list
 		List<Item> itemsAvail = theQuery.getResultList();
@@ -108,6 +106,41 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		theEmployee.addItem(theItem);
 		
 		getCurrentSession().save(theEmployee);
+		
+		//update the item's availability to false
+		Query<?> theQuery =
+				getCurrentSession().createQuery("update Item set itemStatus=:itemStatus where itemID=:itemID");
+		
+		theQuery.setParameter("itemStatus", false);
+		theQuery.setParameter("itemID", theItemID);
+		
+		theQuery.executeUpdate();
+		
+	}
+
+	@Override
+	public void removeAsset(int theEmpID, int theItemID) {
+		
+		//get the item
+		Item item = getCurrentSession().get(Item.class, theItemID);
+		
+		//get the custodian of the item
+		Employee employee = item.getEmployee();
+		
+		//get the all the custodians Item
+		List<Item> items = employee.getItems();
+		
+		//remove the item from custodians Item
+		items.remove(item);
+		
+		//create query to make the item available for new custodian
+		Query<?> theQuery =
+				getCurrentSession().createQuery("update Item set itemStatus=:itemStatus where itemID=:itemID");
+		
+		theQuery.setParameter("itemStatus", true);
+		theQuery.setParameter("itemID", theItemID);
+		
+		theQuery.executeUpdate();
 		
 	}
 

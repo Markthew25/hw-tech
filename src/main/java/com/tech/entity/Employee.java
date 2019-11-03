@@ -38,7 +38,7 @@ public class Employee {
 	@Column(name="dept_id")
 	private int deptID;
 	
-	@OneToMany(fetch=FetchType.LAZY,
+	@OneToMany(fetch=FetchType.EAGER,
 			cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	@JoinTable(
 			name="assets",
@@ -101,7 +101,7 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [empID=" + empID + ", empFName=" + empFName + ", empMName=" + empMName + ", empLName="
-				+ empLName + ", deptID=" + deptID + ", items=" + items + "]";
+				+ empLName + ", deptID=" + deptID + "]";
 	}
 	
 	

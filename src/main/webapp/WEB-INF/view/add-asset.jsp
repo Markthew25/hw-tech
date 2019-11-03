@@ -17,10 +17,6 @@
 			
 			<div id="content">
 			
-			<form:form action="save-asset" modelAttribute="employee" method="GET">
-
-				<form:hidden path="empID" />
-
 				<!-- add our html table here -->
 				
 				<table class="table table-sm table-striped table-bordered table-hover">			
@@ -36,7 +32,7 @@
 						<!-- Loop through items -->
 						<c:forEach var="tempItem" items="${itemsAvail }">
 
-							<c:url var="addAssetLink" value="/employee/add-asset">
+							<c:url var="saveAssetLink" value="/employee/save-asset">
 								<c:param name="empID" value="${employee.empID }" />
 								<c:param name="itemID" value="${tempItem.itemID }" />
 							</c:url>
@@ -49,8 +45,7 @@
 								
 								<td>
 									<!-- display the update link -->
-									<a href="${addAssetLink }" onclick="if(!(confirm('Are you sure you want to add this item to ${employee.empFName} ${employee.empLName}?'))) return false">Add</a>
-									<input type="submit" value="Add Asset" class="save"/>
+									<a href="${saveAssetLink }" onclick="if(!(confirm('Are you sure you want to add this item to ${employee.empFName} ${employee.empLName}?'))) return false">Add</a>
 								</td>
 							
 							</tr>
@@ -58,8 +53,6 @@
 						</c:forEach>
 
 				</table>
-				
-				</form:form>
 				
 			</div>
 		

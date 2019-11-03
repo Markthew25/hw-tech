@@ -61,7 +61,7 @@ public class ItemController {
 		
 	}
 	
-	@GetMapping("/showAddItemForm")
+	@GetMapping("/add-item")
 	public String showAddItemForm(Model theModel) {
 		
 		//create model attribute
@@ -75,7 +75,7 @@ public class ItemController {
 		return "item-form";
 	}
 	
-	@PostMapping("/saveItem")
+	@PostMapping("/save-item")
 	public String saveItem(@Valid @ModelAttribute("item") Item theItem, 
 			BindingResult theBindingResult,
 			Model theModel) {
@@ -100,7 +100,7 @@ public class ItemController {
 		
 	}
 	
-	@GetMapping("/showUpdateItemForm")
+	@GetMapping("/update-item")
 	public String showUpdateItemForm(@RequestParam("itemID") int theID, Model theModel) {
 		
 		// get the item from the service
@@ -115,7 +115,7 @@ public class ItemController {
 		return "item-form";
 	}
 	
-	@GetMapping("/delete")
+	@GetMapping("/delete-item")
 	public String deleteItem(@RequestParam("itemID") int theID) {
 		
 		//delete the item

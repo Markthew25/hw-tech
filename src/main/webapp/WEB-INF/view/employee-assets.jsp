@@ -45,13 +45,18 @@
 					<!-- Loop through items -->
 					<c:forEach var="tempAssets" items="${empAssets }">
 						
+						<c:url var="removeAssetLink" value="/employee/remove-asset">
+							<c:param name="empID" value="${employee.empID }" />
+							<c:param name="itemID" value="${tempAssets.itemID }"></c:param>
+						</c:url>
+						
 						<tr>
 						
 							<td>${tempAssets.itemName }</td>
 							
 							<td>
 								<!-- display the update link -->
-								<a href="${removeAssetLink }" onclick="if(!(confirm('Are you sure you want to delete this item?'))) return false">Remove</a>
+								<a href="${removeAssetLink }" onclick="if(!(confirm('Are you sure you want to remove this item from ${employee.empFName} ${employee.empLName}?'))) return false">Remove</a>
 							</td>
 						
 						</tr>

@@ -12,7 +12,7 @@
 	</div>	
 	
 	<div id="container" class="add-form">	
-		<form:form action="saveItem" modelAttribute="item" method="POST">
+		<form:form action="save-item" modelAttribute="item" method="POST">
 		
 			<!-- when updating: need to associate this data with item id -->
 			<!-- this line is very important, without this, you'll lose context or lose the actual id of original item -->
@@ -49,7 +49,7 @@
 								<form:option value="" label="--Please Select"/>
 								<form:option value="1">Available</form:option>
 								<form:option value="0">Not Available</form:option>
-							</form:select>
+							</form:select>	
 						</td>
 					</tr>
 					<tr>

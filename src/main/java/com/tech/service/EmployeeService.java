@@ -25,5 +25,7 @@ public interface EmployeeService {
 	public List<Item> getItemsAvailable();
 
 	public void saveAsset(int theEmpID, int theItemID);
+
+	public void removeAsset(int theEmpID, int theItemID);
 	
 }
