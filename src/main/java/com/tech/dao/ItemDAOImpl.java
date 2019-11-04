@@ -5,8 +5,10 @@ import java.util.List;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
-import com.tech.entity.Item;
+import com.tech.entity.Brand;
 import com.tech.entity.Category;
+import com.tech.entity.Item;
+import com.tech.entity.Supplier;
 
 @Repository
 public class ItemDAOImpl extends BaseDAO implements ItemDAO {
@@ -91,6 +93,30 @@ public class ItemDAOImpl extends BaseDAO implements ItemDAO {
 		//return the results
 		return cats;
 
+	}
+
+	@Override
+	public List<Brand> getItemBrands() {
+		
+		Query <Brand> theQuery =
+				getCurrentSession().createQuery(" from Brand order by brandName", Brand.class);
+		
+		//execute query and get result list
+		List<Brand> brands = theQuery.getResultList(); 
+
+		return brands;
+	}
+
+	@Override
+	public List<Supplier> getItemSuppliers() {
+
+		Query <Supplier> theQuery =
+				getCurrentSession().createQuery(" from Supplier order by suppName", Supplier.class);
+		
+		//execute query and get result list
+		List<Supplier> supps = theQuery.getResultList(); 
+
+		return supps;
 	}
 
 }

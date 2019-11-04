@@ -3,6 +3,8 @@ package com.tech.service;
 import java.util.List;
 
 import com.tech.entity.Item;
+import com.tech.entity.Supplier;
+import com.tech.entity.Brand;
 import com.tech.entity.Category;
 
 public interface ItemService {
@@ -16,5 +18,9 @@ public interface ItemService {
 	public void deleteItem(int theID);
 
 	public List<Category> getItemCats();
+
+	public List<Brand> getItemBrands();
+
+	public List<Supplier> getItemSuppliers();
 	
 }

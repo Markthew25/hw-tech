@@ -35,6 +35,7 @@ public class Item {
 	
 	@Column(name = "brand_id")
 	private int brandID;
+	
 	@Column(name = "supp_id")
 	private int suppID;
 	
