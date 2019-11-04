@@ -166,4 +166,19 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		theQuery.executeUpdate();
 	}
 
+	//LAZY LOADING ACHIEVED!
+	@Override
+	public List<?> getEmployeeAssets(int theID) {
+
+		Query<?> theQuery =
+				getCurrentSession().createQuery("select e.items from "
+						+ "Employee e where e.empID=:empID");
+		
+		theQuery.setParameter("empID", theID);
+		
+		List<?> empAssets = theQuery.getResultList();
+		
+		return empAssets;
+	}
+
 }

@@ -26,4 +26,6 @@ public interface EmployeeDAO {
 
 	void removeAsset(int theEmpID, int theItemID);
 
+	List<?> getEmployeeAssets(int theID);
+
 }
