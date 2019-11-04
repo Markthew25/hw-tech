@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tech.dao.ItemDAO;
 import com.tech.entity.Item;
-import com.tech.entity.ItemCategory;
+import com.tech.entity.Category;
 
 @Service
 public class ItemServiceImpl implements ItemService {
@@ -45,7 +45,7 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	@Transactional
-	public List<ItemCategory> getItemCats() {
+	public List<Category> getItemCats() {
 		return itemDAO.getItemCats();
 	}
 

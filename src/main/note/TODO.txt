@@ -1,6 +1,9 @@
 salaries foreign key constraint on employee
 complete the validation in employee and item
 
+LAZY LOADING (DONT USE EAGER)
+https://stackoverflow.com/questions/33056952/openentitymanagerinviewfilter-annotation-config
+
 AVOID UPDATE AND INSERT IN JOIN TABLE
 https://www.logicbig.com/tutorials/java-ee-tutorial/jpa/one-to-many-bidirectional-join-table.html
 

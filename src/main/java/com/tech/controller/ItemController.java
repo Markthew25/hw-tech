@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tech.entity.Item;
-import com.tech.entity.ItemCategory;
+import com.tech.entity.Category;
 import com.tech.service.ItemService;
 
 @Controller
@@ -67,7 +67,7 @@ public class ItemController {
 		//create model attribute
 		Item theItem = new Item();
 				
-		List<ItemCategory> theCats= itemService.getItemCats();
+		List<Category> theCats= itemService.getItemCats();
 		
 		theModel.addAttribute("item", theItem);
 		theModel.addAttribute("category", theCats);
@@ -80,7 +80,7 @@ public class ItemController {
 			BindingResult theBindingResult,
 			Model theModel) {
 		
-		List<ItemCategory> theCats= itemService.getItemCats();
+		List<Category> theCats= itemService.getItemCats();
 		theModel.addAttribute("category", theCats);
 		
 		//save the item using our service
@@ -105,7 +105,7 @@ public class ItemController {
 		
 		// get the item from the service
 		Item theItem = itemService.getItem(theID);
-		List<ItemCategory> theCats= itemService.getItemCats();
+		List<Category> theCats= itemService.getItemCats();
 		
 		//set item as model attribute to prepopulate the form
 		theModel.addAttribute("item", theItem);

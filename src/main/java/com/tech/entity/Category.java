@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="categories")
-public class ItemCategory{
+public class Category{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,11 +19,11 @@ public class ItemCategory{
 	@Column(name = "cat_name")
 	private String catName;
 	
-	public ItemCategory() {
+	public Category() {
 		
 	}
 
-	public ItemCategory(String catName) {
+	public Category(String catName) {
 		this.catName = catName;
 	}
 

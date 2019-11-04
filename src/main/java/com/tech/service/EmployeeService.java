@@ -20,8 +20,6 @@ public interface EmployeeService {
 
 	public void deleteEmployee(int theID);
 
-	public List<Item> getEmpAssets(int theID);
-
 	public List<Item> getItemsAvailable();
 
 	public void saveAsset(int theEmpID, int theItemID);

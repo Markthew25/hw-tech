@@ -26,6 +26,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 })
 @EnableTransactionManagement
 @ComponentScan(basePackages="com.tech")
+//CONFIG CLASS
 public class HWTechAppConfig {
 
 	@Autowired
@@ -94,5 +95,6 @@ public class HWTechAppConfig {
         return source;
 		
 	}
-
+	
+	
 }
