@@ -3,7 +3,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c"%>
  
-<jsp:include page="header.jsp"/>
+<%
+String pageTitle = "Employee list";
+%>
+<jsp:include page="header.jsp">
+<jsp:param name="pageTitle" value="<%=pageTitle%>" />
+</jsp:include>
 
 	<div id="wrapper">
 	
