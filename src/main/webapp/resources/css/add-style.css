@@ -30,6 +30,10 @@ input {
 	font-size: 16px;
 }
 
+#serial{
+	width:400px;
+}
+
 .save-button {
 	font-weight: bold;
 	width: 25%; 

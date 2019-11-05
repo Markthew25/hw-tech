@@ -23,11 +23,24 @@
         $(function () {
             $("#dbpicker").datepicker();
         });
-    </script>
-    <script>
+
         $(function () {
             $("#dwpicker").datepicker();
         });
+        
+        $(document).ready(function () {
+            $('#serial').keyup(function (event) {
+                addHyphen (this);
+            });
+        });
+
+        function addHyphen (element) {
+            let val = $(element).val().split('-').join('');   // Remove dash (-) if mistakenly entered.
+
+            let finalVal = val.match(/.{1,5}/g).join('-');    // Add (-) after 3rd every char.
+            $(element).val(finalVal);		// Update the input box.
+        }
+         
     </script>
 	
 </head>
@@ -110,12 +123,18 @@
 					<tr>
 						<td><form:label path="catID">Category:</form:label></td>
 						<td>
-							<form:select path = "catID" >
+							<form:select path = "catID">
 								<form:option value = "-1" label = "--Please Select"/>
 								<c:forEach var="tempCats" items="${categories }">
 									<form:option value="${tempCats.catID }"  label="${tempCats.catName }"/>
 			                	</c:forEach>
 			                </form:select>
+						</td>
+					</tr>
+					<tr>
+						<td><label>Serial # :</label></td>
+						<td>
+							<form:input path="itemSerial" maxlength="29" id="serial"/>
 						</td>
 					</tr>
 					<tr>
@@ -143,7 +162,7 @@
 					<tr>
 						<td><label>Quantity:</label></td>
 						<td>
-							<form:input path="itemQty"/>
+							<form:input path="itemQty" id="quantity"/>
 							<form:errors path="itemQty" Class="error"/>
 						</td>
 						
@@ -164,5 +183,9 @@
 		
 	</div>
 
+<footer><i>Copyright @ Mark Morales</i></footer>
 
-<jsp:include page="footer.jsp"/>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

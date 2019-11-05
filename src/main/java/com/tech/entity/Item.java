@@ -30,6 +30,9 @@ public class Item {
 	@Column(name = "item_name")
 	private String itemName;
 	
+	@Column(name="item_serial")
+	private String itemSerial;
+	
 	@Column(name = "cat_id")
 	private int catID;
 	
@@ -100,6 +103,14 @@ public class Item {
 
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
+	}
+
+	public String getItemSerial() {
+		return itemSerial;
+	}
+
+	public void setItemSerial(String itemSerial) {
+		this.itemSerial = itemSerial;
 	}
 
 	public Boolean getItemStatus() {
