@@ -1,12 +1,12 @@
 package com.tech.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +15,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="employees")
@@ -38,7 +40,15 @@ public class Employee {
 	@Column(name="dept_id")
 	private int deptID;
 	
-	@OneToMany(fetch=FetchType.EAGER,
+	@DateTimeFormat(pattern = "MM/dd/yyyy")
+	@Column(name="emp_dob")
+	private Date empDOB;
+	
+	@DateTimeFormat(pattern = "MM/dd/yyyy")
+	@Column(name="emp_dh")
+	private Date empDH;
+	
+	@OneToMany(
 			cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	@JoinTable(
 			name="assets",
@@ -78,9 +88,26 @@ public class Employee {
 	public int getDeptID() {
 		return deptID;
 	}
+	
 	public void setDeptID(int depID) {
 		this.deptID = depID;
 	}
+	public Date getEmpDOB() {
+		return empDOB;
+	}
+
+	public void setEmpDOB(Date empDOB) {
+		this.empDOB = empDOB;
+	}
+
+	public Date getEmpDH() {
+		return empDH;
+	}
+
+	public void setEmpDH(Date empDH) {
+		this.empDH = empDH;
+	}
+
 	public List<Item> getItems() {
 		return items;
 	}

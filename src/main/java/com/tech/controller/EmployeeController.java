@@ -123,7 +123,10 @@ public class EmployeeController {
 		
 		//get assets
 		//THE TRANSACTION IS ALREADY CLOSE WHEN WE CALL THIS, SO THAT OUR LAZY LOADING ON EMPLOYEE WONT WORK
-		List<Item> empAssets = theEmployee.getItems();
+//		List<Item> empAssets = theEmployee.getItems();
+		
+		//separate method for getting empAssets, we dont use eager as far as possible
+		List<?> empAssets = empService.getEmployeeAssets(theID);
 		
 		//set employee ad model attribute to prepopulate the form
 		theModel.addAttribute("employee", theEmployee);
@@ -157,10 +160,7 @@ public class EmployeeController {
 			@RequestParam("empID") int theEmpID,
 			@RequestParam("itemID") int theItemID,
 			Model theModel) {
-		
-		
-		//added binding validation
-		
+	
 		empService.saveAsset(theEmpID, theItemID);
 	
 		return "redirect:/employee/assets?empID=" + theEmpID;

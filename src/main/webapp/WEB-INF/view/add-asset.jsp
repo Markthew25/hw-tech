@@ -3,7 +3,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c"%>
  
-<jsp:include page="header.jsp"/>
+<%
+String pageTitle = "Add asset";
+%>
+<jsp:include page="header.jsp">
+<jsp:param name="pageTitle" value="<%=pageTitle%>" />
+</jsp:include>
 
 	<div id="wrapper">
 	
@@ -54,11 +59,16 @@
 
 				</table>
 				
+				<div style="clear;both;"></div>
+			
+				<p> 
+					<a href="${pageContext.request.contextPath}/employee/assets?empID=${employee.empID}" >Back</a>
+				</p>
+				
 			</div>
 		
 		</div>
-		
-	
+
 	</div>
 
 <jsp:include page="footer.jsp"/>
