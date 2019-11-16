@@ -23,17 +23,10 @@ public class HWTechDispatcherServletInitializer extends AbstractAnnotationConfig
 
 	@Override
 	protected String[] getServletMappings() {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 		return new String[] {
 				"/"
 		};
 	}
-
-	//OPTION 2 for resolving lazyloading error, (NO NEED TO EAGER Loading)
-//	@Override
-//    protected Filter[] getServletFilters() {
-//        return new Filter[]{new OpenEntityManagerInViewFilter()};
-//    }
-	
 	
 }

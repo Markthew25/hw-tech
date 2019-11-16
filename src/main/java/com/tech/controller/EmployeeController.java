@@ -30,7 +30,7 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService empService;
 	
-	//TODO add init binder
+	//add init binder
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
 		

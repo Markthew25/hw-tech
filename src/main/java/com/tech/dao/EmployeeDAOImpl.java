@@ -130,12 +130,9 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		
 		//get the item
 		Item item = getCurrentSession().get(Item.class, theItemID);
-		
-		//get the custodian of the item
-		Employee employee = item.getEmployee();
-		
+			
 		//get the all the custodians Item
-		List<Item> items = employee.getItems();
+		List<Item> items = item.getEmployee().getItems();
 		
 		//remove the item from custodians Item
 		items.remove(item);

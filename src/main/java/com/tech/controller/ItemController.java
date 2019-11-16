@@ -88,6 +88,7 @@ public class ItemController {
 			Model theModel) {
 		
 		List<Category> theCats = itemService.getItemCats();
+		
 		List<Brand> theBrands = itemService.getItemBrands();
 		List<Supplier> theSuppliers = itemService.getItemSuppliers();
 		
