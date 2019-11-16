@@ -32,6 +32,21 @@ public class ItemDAOImpl extends BaseDAO implements ItemDAO {
 
 	@Override
 	public void saveItem(Item theItem) {
+
+//		if(theItem.getItemStatus().equals(true)) {
+//			theItem.getEmployee().getItems().remove(theItem);
+//		}
+		
+		//get employee from item
+		
+//		Query<?> query = getCurrentSession().createQuery("select i.employee "
+//				+ "from Item i where i.itemID=:itemID");
+//		
+//		query.setParameter("itemID", theItem.getItemID());
+//		
+//		Object emp = (Employee)query.getSingleResult();
+//	
+//		getCurrentSession().saveOrUpdate(theItem);
 		
 		//get current hibernate session
 //		Session currentSession = sessionFactory.getCurrentSession();
@@ -43,7 +58,7 @@ public class ItemDAOImpl extends BaseDAO implements ItemDAO {
 		//and udpate(...) for existing record
 		//but in this case we will use the same method for adding and for updating
 		//so we can use other method in hibernate saveOrUpdate(...)
-		
+			
 		//save or update the item
 		getCurrentSession().saveOrUpdate(theItem);
 		

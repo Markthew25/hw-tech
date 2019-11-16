@@ -2,6 +2,8 @@ package com.tech.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,28 +13,22 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "items")
+@DiscriminatorColumn(name="item_type", discriminatorType=DiscriminatorType.STRING)
 public class Item {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "item_id")
 	private int itemID;
 
-	@NotNull(message="is required")
-	@Size(min=1, message="is required") 
+	@NotBlank(message="is required")
 	@Column(name = "item_name")
 	private String itemName;
-	
-	@Column(name="item_serial")
-	private String itemSerial;
-	
+
 	@Column(name = "cat_id")
 	private int catID;
 	
@@ -41,23 +37,19 @@ public class Item {
 	
 	@Column(name = "supp_id")
 	private int suppID;
-	
+
 	@Column(name = "item_status")
 	private Boolean itemStatus;
 	
-	@Max(value=1000, message="must be less than or equal to 1000")
-	@Min(value=10, message="must be greater than or equal to 10")
-	@NotNull(message="is required")
-	
-	@Column(name = "item_qty")
-	private Integer itemQty;
+	@Column(name="item_type",insertable=false, updatable=false)
+	private String itemType;
 
 	@ManyToOne(fetch=FetchType.LAZY,
 			cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	@JoinTable(
 			name="assets",
 			joinColumns=@JoinColumn(name="item_id", insertable=false, updatable=false),
-			inverseJoinColumns=@JoinColumn(name="emp_id", insertable=false, updatable=false)
+			inverseJoinColumns=@JoinColumn(name="emp_id", insertable=false, updatable=false)	
 			)
 	private Employee employee;
 		
@@ -102,15 +94,7 @@ public class Item {
 	}
 
 	public void setItemName(String itemName) {
-		this.itemName = itemName;
-	}
-
-	public String getItemSerial() {
-		return itemSerial;
-	}
-
-	public void setItemSerial(String itemSerial) {
-		this.itemSerial = itemSerial;
+		this.itemName = itemName.trim();
 	}
 
 	public Boolean getItemStatus() {
@@ -120,37 +104,34 @@ public class Item {
 	public void setItemStatus(Boolean itemStatus) {
 		this.itemStatus = itemStatus;
 	}
-
-	public Integer getItemQty() {
-		return itemQty;
-	}
-
-	public void setItemQty(Integer itemQty) {
-		this.itemQty = itemQty;
-	}
 	
+	public String getItemType() {
+		return itemType;
+	}
+
+	public void setItemType(String itemType) {
+		this.itemType = itemType;
+	}
+
 	public Employee getEmployee() {
 		return employee;
 	}
 
+	
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
-
-	//convience method
-//	public void addEmployee(Employee theEmployee) {
-//		if(employee==null) {
-//			employee = new Employee();
-//		}
-//		
-//		employee.getItems();
-//		
-//	}
+	
+	public void removeEmployee(Employee theEmployee) {
+		
+		theEmployee.getItems().remove(this);
+		
+	}
 	
 	@Override
 	public String toString() {
 		return "Item [itemID=" + itemID + ", itemName=" + itemName + ", catID=" + catID + ", brandID=" + brandID
-				+ ", suppID=" + suppID + ", itemStatus=" + itemStatus + ", itemQty=" + itemQty + "]";
+				+ ", suppID=" + suppID + ", itemStatus=" + itemStatus + "]";
 	}
 	
 

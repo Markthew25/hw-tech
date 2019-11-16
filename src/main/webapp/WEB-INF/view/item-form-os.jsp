@@ -88,7 +88,7 @@
 	</div>	
 	
 	<div id="container" class="add-form">	
-		<form:form action="save-item" modelAttribute="item" method="POST">
+		<form:form action="save-item-os" modelAttribute="item" method="POST">
 		
 			<!-- when updating: need to associate this data with item id -->
 			<!-- this line is very important, without this, you'll lose context or lose the actual id of original item -->
@@ -98,7 +98,7 @@
 			<form:hidden path="itemID" />
 			
 			<i>Fill out the form. Asterisk (*) means required.</i>
-		
+			<hr>
 			<table>
 				<tbody>
 				
@@ -134,7 +134,8 @@
 					<tr>
 						<td><label>Serial # :</label></td>
 						<td>
-							<form:input path="itemSerial" maxlength="29" id="serial"/>
+							<form:input path="serial" maxlength="29" id="serial"/>
+							<form:errors path="serial" Class="error"/>
 						</td>
 					</tr>
 					<tr>
@@ -160,21 +161,13 @@
 						</td>
 					</tr>
 					<tr>
-						<td><label>Quantity:</label></td>
-						<td>
-							<form:input path="itemQty" id="quantity"/>
-							<form:errors path="itemQty" Class="error"/>
-						</td>
-						
-					</tr>
-					<tr>
 						<td><label></label></td>
-						<td><input type="submit" value="Save" class="save-button btn btn-success"/>
+						<td><input type="submit" value="Save" class="save-button btn btn-success"/></td>
 					</tr>
 				</tbody>
 			</table>
 		</form:form>
-		
+	
 		<div style="clear;both;"></div>
 		
 		<p>
@@ -182,7 +175,8 @@
 		</p>
 		
 	</div>
-
+	
+<hr>
 <footer><i>Copyright @ Mark Morales</i></footer>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

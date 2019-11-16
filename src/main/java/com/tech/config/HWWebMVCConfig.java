@@ -17,9 +17,7 @@ import org.springframework.web.servlet.view.JstlView;
 //SPRING WEB CONFIGURATION
 public class HWWebMVCConfig implements WebMvcConfigurer {
 
-//	@Autowired
-//    private EntityManagerFactory emf;
-			
+		
 	@Bean
     public InternalResourceViewResolver resolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();

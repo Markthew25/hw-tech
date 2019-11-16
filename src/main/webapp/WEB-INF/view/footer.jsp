@@ -1,4 +1,4 @@
-
+<hr>
 <footer><i>Copyright @ Mark Morales</i></footer>
 
 <!-- 

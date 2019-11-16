@@ -22,18 +22,20 @@ String pageTitle = "Item list";
 			
 			<div id="content">
 			
-				<input type="submit" value="Add Item"
-						onclick="window.location.href='add-item'; return false;"
+				<input type="submit" value="Add OS"
+						onclick="window.location.href='add-os'; return false;"
+						class="btn btn-primary add-button"/>
+				<input type="submit" value="Add Peripheral"
+						onclick="window.location.href='add-peripheral'; return false;"
 						class="btn btn-primary add-button"/>
 			
 				<!-- add our html table here -->
-				
+				<hr>
 				<table class="table table-sm table-striped table-bordered table-hover">			
 					<thead class="thead-dark">
 						<tr>			
 							<th>Item name</th>
 							<th>Item Status</th>
-							<th>Item Quantity</th>
 							<th>Action</th>
 						 </tr>
 					 </thead>
@@ -57,7 +59,6 @@ String pageTitle = "Item list";
 						
 							<td>${tempItem.itemName }</td>
 							<td>${tempItem.itemStatus }</td>
-							<td>${tempItem.itemQty }</td>
 							
 							<td>
 								<!-- display the update link -->

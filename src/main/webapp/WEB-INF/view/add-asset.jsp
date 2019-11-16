@@ -29,7 +29,6 @@ String pageTitle = "Add asset";
 						<tr>			
 							<th>Item name</th>
 							<th>Item Status</th>
-							<th>Item Quantity</th>
 							<th>Action</th>
 						 </tr>
 					 </thead>
@@ -46,7 +45,6 @@ String pageTitle = "Add asset";
 							
 								<td>${tempItem.itemName }</td>
 								<td>${tempItem.itemStatus }</td>
-								<td>${tempItem.itemQty }</td>
 								
 								<td>
 									<!-- display the update link -->
