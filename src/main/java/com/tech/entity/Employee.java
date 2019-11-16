@@ -52,8 +52,8 @@ public class Employee {
 			cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	@JoinTable(
 			name="assets",
-			joinColumns=@JoinColumn(name="emp_id"),
-			inverseJoinColumns=@JoinColumn(name="item_id")
+			joinColumns=@JoinColumn(name="emp_id", insertable=false, updatable=false),
+			inverseJoinColumns=@JoinColumn(name="item_id", insertable=false, updatable=false)	
 			)
 	private List<Item> items;
 	
@@ -122,6 +122,8 @@ public class Employee {
 		}
 		
 		items.add(theItem);
+		
+		theItem.setEmployee(this);
 		
 	}
 

@@ -1,0 +1,8 @@
+PRG - Post-Redirect-Get pattern - avoid duplicate submission.
+
+
+Hibernate - @MappedSuperClass
+
+https://thoughts-on-java.org/complete-guide-inheritance-strategies-jpa-hibernate/
+
+https://vladmihalcea.com/how-to-inherit-properties-from-a-base-class-entity-using-mappedsuperclass-with-jpa-and-hibernate/

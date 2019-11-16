@@ -1,0 +1,3 @@
+When working in hashsets it is recommended to use unique business key
+ex: Employee full name including m.i (or include birthday)
+Alternative: if we're only using ID, then we can implement "equals and hashcode" in any IDE that has automatic generation of this method

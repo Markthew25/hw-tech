@@ -41,7 +41,7 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 	@Override
 	public Employee getEmployee(int theID) {
 		
-		//retrieve employee from database
+		//retrieve employee from database with the ID 
 		Employee theEmployee = getCurrentSession().get(Employee.class, theID);
 		
 		return theEmployee;
@@ -106,7 +106,7 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 
 		//execute query and get result list
 		List<Item> itemsAvail = theQuery.getResultList();
-		
+	
 		return itemsAvail;
 	}
 
@@ -114,9 +114,8 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 	public void saveAsset(int theEmpID, int theItemID) {
 		
 		Employee theEmployee = getCurrentSession().get(Employee.class, theEmpID);
-		Item theItem = getCurrentSession().get(Item.class, theItemID);
-		
-		theEmployee.addItem(theItem);
+
+		theEmployee.addItem(getCurrentSession().get(Item.class, theItemID));
 		
 		getCurrentSession().save(theEmployee);
 		
@@ -130,15 +129,19 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		
 		//get the item
 		Item item = getCurrentSession().get(Item.class, theItemID);
-			
+
 		//get the all the custodians Item
 		List<Item> items = item.getEmployee().getItems();
 		
 		//remove the item from custodians Item
 		items.remove(item);
 		
+		item.removeEmployee(item.getEmployee());
+		
 		//create query to make the item available for new custodian
 		itemIsAvailable(theItemID);
+		
+		
 		
 	}
 

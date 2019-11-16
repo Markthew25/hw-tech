@@ -1,0 +1,18 @@
+//example
+in Employee class has
+@OneToMany(mappedBy="employee",
+			cascade= {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	private List<Item> items;
+
+in Item class has
+@JoinTable(
+			name="assets",
+			joinColumns=@JoinColumn(name="item_id", insertable=false, updatable=false),
+			inverseJoinColumns=@JoinColumn(name="emp_id", insertable=false, updatable=false)	
+			)
+	private Employee employee;
+
+-OneToMany -One Employee Many Items.
+-Where mappedby is implemented then that class is not in the "Own" side
+-class that has the joinTable is the "Own" side of the association
+-Exclude cascadeType.Delete because we dont want to delete the item if we delete the employee.

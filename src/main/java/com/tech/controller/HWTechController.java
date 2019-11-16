@@ -11,6 +11,11 @@ public class HWTechController {
 		return "index";
 	}
 	
+	@GetMapping("/home2")
+	public String showHome2() {
+		return "index2";
+	}
+	
 	//add request mapping for /leaders
 	@GetMapping("/leaders")
 	public String showLeaders() {

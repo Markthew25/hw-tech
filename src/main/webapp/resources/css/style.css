@@ -10,6 +10,10 @@ table {
 	font-family: Tahoma,Verdana,Segoe,sans-serif;
 	width:72%;
 }
+
+footer{
+	padding-top:150px;
+}
  
 th {
 	border-bottom:1px solid gray;
