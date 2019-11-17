@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c"%>
  
-<!DOCTYPE html SYSTEM "about:legacy-compat">
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
@@ -175,11 +175,7 @@
 		</p>
 		
 	</div>
-<<<<<<< HEAD:src/main/webapp/WEB-INF/view/item-form.jsp
 
-<jsp:include page="footer.jsp"/>
-=======
-	
 <hr>
 <footer><i>Copyright @ Mark Morales</i></footer>
 
@@ -187,4 +183,3 @@
 
 </body>
 </html>
->>>>>>> 508de69992241741f84d63b0bf882f7b973237a9:src/main/webapp/WEB-INF/view/item-form-os.jsp
