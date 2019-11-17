@@ -18,7 +18,6 @@ public class Department {
 	@Column(name="dept_name")
 	private String deptName;
 	
-	//dept ID
 	public int getDeptID() {
 		return deptID;
 	}
